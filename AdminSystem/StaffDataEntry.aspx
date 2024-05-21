@@ -31,16 +31,19 @@
         <asp:Label ID="Label12" runat="server" Font-Names="Algerian" Font-Size="50px" style="z-index: 1; left: 412px; top: 26px; position: absolute; width: 535px; height: 39px" Text="Staff Data Entry"></asp:Label>
         <p>
             <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 101px; top: 246px; position: absolute; width: 140px" Text="Gender" Font-Names="Arial Black"></asp:Label>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 703px; top: 603px; position: absolute; height: 43px;" Text="Cancel" width="168px" BackColor="#FF3300" Font-Names="Arial Black" Font-Size="25px" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 539px; top: 604px; position: absolute; height: 43px;" Text="Cancel" width="168px" BackColor="#FF3300" Font-Names="Arial Black" Font-Size="25px" />
+            <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 9px; top: 67px; position: absolute" Text="Staff Id"></asp:Label>
+            <asp:TextBox ID="txtstaffId" runat="server" style="z-index: 1; left: 83px; top: 62px; position: absolute; width: 95px"></asp:TextBox>
         </p>
         <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 165px; top: 452px; position: absolute" Text="[IblError]"></asp:Label>
-        <asp:TextBox ID="txtname" runat="server" style="z-index: 1; left: 275px; top: 115px; position: absolute; width: 182px"></asp:TextBox>
+        <asp:TextBox ID="txtname" runat="server" style="z-index: 1; left: 279px; top: 119px; position: absolute; width: 182px"></asp:TextBox>
         <p>
             &nbsp;</p>
         <asp:CheckBox ID="Chkf" runat="server" style="z-index: 1; left: 291px; top: 269px; position: absolute" Text="Female" />
         <p>
             <asp:CheckBox ID="chkm" runat="server" style="z-index: 1; left: 296px; top: 231px; position: absolute" Text="Male" />
         </p>
+        <asp:Button ID="btnfind" runat="server" OnClick="btnfind_Click" style="z-index: 1; left: 863px; top: 608px; position: absolute; width: 100px; height: 36px" Text="Find" />
     </form>
 </body>
 </html>

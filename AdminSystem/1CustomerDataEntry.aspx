@@ -51,7 +51,7 @@
             <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
         </p>
         <p>
-            <asp:Button ID="Button1" runat="server" Height="48px" OnClick="Button1_Click" style="margin-left: 13px; margin-top: 30px" Text="OK" Width="183px" />
+            <asp:Button ID="btnOK" runat="server" Height="48px" OnClick="btnOK_Click" style="margin-left: 13px; margin-top: 30px" Text="OK" Width="183px" />
             <asp:Button ID="Button2" runat="server" Height="48px" style="margin-left: 13px; margin-top: 30px" Text="Cancel" Width="183px" />
         </p>
         <p>
