@@ -21,5 +21,12 @@ namespace ClassLibrary
         public DateTime Orderdata { get; set; }
         public DateTime orderdate { get; set; }
         public DateTime Orderdate { get; set; }
+
+        public bool find(int customerId)
+        {
+            // always return true
+            return true;
+            throw new NotImplementedException();
+        }
     }
 }

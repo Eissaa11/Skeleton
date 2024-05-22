@@ -79,6 +79,24 @@ namespace Testing3
             AnCustomer.Orderdate = TestData;
             Assert.AreEqual(AnCustomer.Orderdate, TestData);
         }
-    }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //Create an instance of the class we want to create
+            ClsCustomer AnCustomer = new ClsCustomer();
+            //create a Boolean variable to store the result of the validation 
+            Boolean Found = false;
+            //create some test data to usa with the method
+            Int32 CustomerId = 21;
+            //invOke the method 
+            Found = AnCustomer.find(CustomerId);
+            //test to see it if the result is true
+            Assert.IsTrue(Found);
 
-}
+        }
+
+    }
+  
+    
+   
+    }
