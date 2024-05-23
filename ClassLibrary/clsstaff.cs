@@ -4,20 +4,22 @@ namespace ClassLibrary
 {
     public class clsstaff
     {
-        private DateTime mjoiningDate;
-        public DateTime joiningDate
+
+        private DateTime mJOD;
+        public DateTime JOD
         {
             get
             {
-                return mjoiningDate;
+                return mJOD;
             }
             set
             {
-                mjoiningDate = value;
+                mJOD = value;
             }
         }
         private Boolean mGender;
-        public bool Gender {
+        public bool Gender
+        {
             get
             {
                 return mGender;
@@ -26,21 +28,23 @@ namespace ClassLibrary
             {
                 mGender = value;
             }
-                }
+        }
         private Int32 mStaffId;
-        public Int32 StaffId 
-        { 
-            get 
+        public Int32 StaffId
+        {
+            get
             {
                 return mStaffId;
             }
             set
 
-            { mStaffId = value;
+            {
+                mStaffId = value;
             }
-         }
+        }
         private string mEmailId;
-        public string EmailId {
+        public string EmailId
+        {
             get
             {
                 return mEmailId;
@@ -51,18 +55,20 @@ namespace ClassLibrary
             }
         }
         private string mFulladdress;
-        public string Fulladdress {
+        public string Fulladdress
+        {
             get
             {
-              return mFulladdress;
+                return mFulladdress;
             }
             set
             {
-               mFulladdress = value;
+                mFulladdress = value;
             }
-                }
+        }
         private string mFirstName;
-        public string FirstName {
+        public string FirstName
+        {
             get
             {
                 return mFirstName;
@@ -71,9 +77,10 @@ namespace ClassLibrary
             {
                 mFirstName = value;
             }
-                }
+        }
         private string mLastName;
-        public string LastName {
+        public string LastName
+        {
             get
             {
                 return mLastName;
@@ -82,9 +89,10 @@ namespace ClassLibrary
             {
                 mLastName = value;
             }
-                }
+        }
         private string mPosition;
-        public string Position {
+        public string Position
+        {
             get
             {
                 return mPosition;
@@ -95,18 +103,20 @@ namespace ClassLibrary
             }
         }
         private Int32 mPhoneno;
-        public int Phoneno {
+        public int Phoneno
+        {
             get
-            { 
+            {
                 return mPhoneno;
             }
             set
             {
                 mPhoneno = value;
-            } 
-                }
+            }
+        }
         private DateTime mDOB;
-        public DateTime DOB {
+        public DateTime DOB
+        {
             get
             {
                 return mDOB;
@@ -117,7 +127,8 @@ namespace ClassLibrary
             }
         }
         private decimal mSalary;
-        public decimal Salary {
+        public decimal Salary
+        {
             get
             {
                 return mSalary;
@@ -126,23 +137,38 @@ namespace ClassLibrary
             {
                 mSalary = value;
             }
-                }
+        }
 
-        public bool Find(int staffId)
+        public bool Find(int StaffId)
         {
-            //set the private data members to the test data value
-            mStaffId = 21;
-            mFirstName = "Aravind";
-            mLastName = "Amgoth";
-            mGender = true;
-            mDOB = Convert.ToDateTime("16/05/2025");
-            mEmailId = "eamilid ";
-            mjoiningDate = Convert.ToDateTime("16/05/2025");
-            mPhoneno = 219999898;
-            mPosition = "Admin";
-            mSalary = 200000;
-            mFulladdress = "Leicester";
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@StaffId", StaffId);
+            //execute the stored procedure
+            DB.Execute("tblstaff_FilterBystaffId");
+            //If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                mStaffId = Convert.ToInt32(DB.DataTable.Rows[0]["StaffId"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
+                mDOB = Convert.ToDateTime(DB.DataTable.Rows[0]["DOB"]);
+                mEmailId = Convert.ToString(DB.DataTable.Rows[0]["EmailId"]);
+                mJOD = Convert.ToDateTime(DB.DataTable.Rows[0]["JOD"]);
+                mPhoneno = Convert.ToInt32(DB.DataTable.Rows[0]["Phoneno"]);
+                mPosition = Convert.ToString(DB.DataTable.Rows[0]["Position"]);
+                mSalary = Convert.ToInt32(DB.DataTable.Rows[0]["Salary"]);
+                mFulladdress = Convert.ToString(DB.DataTable.Rows[0]["Fulladdress"]);
+                return true;
+            }
+            //if no records was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
 }

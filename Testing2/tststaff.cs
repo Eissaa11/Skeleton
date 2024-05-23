@@ -14,7 +14,7 @@ namespace Testing2
             Assert.IsNotNull(staff);
         }
         [TestMethod]
-       public void GenderPropertyOK()
+        public void GenderPropertyOK()
         {
             clsstaff staff = new clsstaff();
             Boolean TestData = true;
@@ -33,7 +33,7 @@ namespace Testing2
         public void StaffIdPropertyOK()
         {
             clsstaff staff = new clsstaff();
-            Int32 TestData = 1;
+            Int32 TestData = 11;
             staff.StaffId = TestData;
             Assert.AreEqual(staff.StaffId, TestData);
         }
@@ -41,7 +41,7 @@ namespace Testing2
         public void PhonenoPropertyOK()
         {
             clsstaff staff = new clsstaff();
-            Int32 TestData = 1;
+            Int32 TestData = 1234567890;
             staff.Phoneno = TestData;
             Assert.AreEqual(staff.Phoneno, TestData);
         }
@@ -52,7 +52,8 @@ namespace Testing2
             String TestData = "amgoth@gmail.com";
             staff.EmailId = TestData;
             Assert.AreEqual(staff.EmailId, TestData);
-        } [TestMethod]
+        }
+        [TestMethod]
         public void FulladdressPropertyOK()
         {
             clsstaff staff = new clsstaff();
@@ -88,7 +89,7 @@ namespace Testing2
         public void SalaryPropertyOK()
         {
             clsstaff staff = new clsstaff();
-            decimal TestData = 50000m; 
+            decimal TestData = 2000;
             staff.Salary = TestData;
             Assert.AreEqual(staff.Salary, TestData);
         }
@@ -97,8 +98,8 @@ namespace Testing2
         {
             clsstaff staff = new clsstaff();
             DateTime TestData = DateTime.Now.Date;
-            staff.joiningDate = TestData;
-            Assert.AreEqual(staff.joiningDate, TestData);
+            staff.JOD = TestData;
+            Assert.AreEqual(staff.JOD, TestData);
         }
         [TestMethod]
         public void FindMethodOK()
@@ -108,7 +109,7 @@ namespace Testing2
             //create a Boolean wariable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 StaffId = 2;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //test to see if the result is true
@@ -124,16 +125,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.StaffId != 21)
+            if (staff.StaffId != 12)
             {
-                OK= false; 
+                OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestDOBFound()
@@ -145,16 +147,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.DOB != Convert.ToDateTime("16/05/2025"))
+            if (staff.DOB != Convert.ToDateTime("12/06/2002"))
             {
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestJODFound()
@@ -166,16 +169,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.joiningDate != Convert.ToDateTime("16/05/2025"))
+            if (staff.JOD != Convert.ToDateTime("16/06/2025"))
             {
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestPhonenoFound()
@@ -187,16 +191,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.Phoneno != 21)
+            if (staff.Phoneno != 1234567890)
             {
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestEmailIdFound()
@@ -208,16 +213,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.EmailId != "eamil id")
+            if (staff.EmailId != "aa@gmail.com")
             {
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestFullAddressFound()
@@ -229,16 +235,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.Fulladdress != "leicester")
+            if (staff.Fulladdress != "Leicester")
             {
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestPositionFound()
@@ -250,7 +257,7 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
@@ -259,7 +266,8 @@ namespace Testing2
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestSalaryFound()
@@ -271,16 +279,17 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 11;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
-            if (staff.Salary != 21000)
+            if (staff.Salary != 2000)
             {
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestGenderFound()
@@ -292,7 +301,7 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
@@ -301,7 +310,8 @@ namespace Testing2
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestFirstNameFound()
@@ -313,7 +323,7 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
@@ -322,7 +332,8 @@ namespace Testing2
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
         [TestMethod]
         public void TestLastNameFound()
@@ -334,7 +345,7 @@ namespace Testing2
             //create a Boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffId = 21;
+            Int32 StaffId = 12;
             //invoke the method
             Found = staff.Find(StaffId);
             //check the staff Id
@@ -343,7 +354,8 @@ namespace Testing2
                 OK = false;
             }
             //test to see if the result is true
-            Assert.IsTrue(Found);
+            Assert.IsTrue(OK);
+
         }
 
     }

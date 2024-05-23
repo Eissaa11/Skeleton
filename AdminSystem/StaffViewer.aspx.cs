@@ -19,7 +19,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("First Name: " + staff.FirstName + "<br />");
         Response.Write("Last Name: " + staff.LastName + "<br />");
         Response.Write("Date of Birth: " + staff.DOB.ToShortDateString() + "<br />");
-        Response.Write("Joining Date: " + staff.joiningDate.ToShortDateString() + "<br />");
+        Response.Write("Joining Date: " + staff.JOD.ToShortDateString() + "<br />");
         Response.Write("Position: " + staff.Position + "<br />");
         Response.Write("Salary: " + staff.Salary.ToString("C") + "<br />"); // Assuming Salary is in decimal and you want to display it as currency
         Response.Write("Phone Number: " + staff.Phoneno + "<br />");
