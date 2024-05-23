@@ -36,4 +36,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void chkAge_CheckedChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsReservation Reservation = new clsReservation();
+        Int32 ReservationId;
+        Boolean Found = false;
+        ReservationId = Convert.ToInt32(txtReservationId.Text);
+        Found = Reservation.Find(ReservationId);
+        if (Found == true)
+        {
+            txtCustomerId.Text = Reservation.CustomerId.ToString();
+            txtName.Text = Reservation.Name;
+            txtPhone.Text = Reservation.Phone;
+            txtDateAndTime.Text = Reservation.DateAndTime.ToString();
+            txtTableNumber.Text = Reservation.TableNumber.ToString();
+            chkAge.Checked = Reservation.Age;
+        }
+    }
 }
