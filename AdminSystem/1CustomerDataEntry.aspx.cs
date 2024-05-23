@@ -19,11 +19,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //crate a new instance of cLsCustomer
         ClsCustomer AnCustomer = new ClsCustomer();
+        AnCustomer.FirstName= txtfname.Text;
         AnCustomer.LastName = textlname.Text;
         AnCustomer.Email = txtemail.Text;
-        AnCustomer.phone = txtphone.Text;
+  AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
         AnCustomer.Address = textaddress.Text;
-        AnCustomer.orderdate = Convert.ToDateTime(DateTime.Now);
+        AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
         AnCustomer.Gender = chkfemale.Checked;
         AnCustomer.Gender = chkmale.Checked;
         //store the address in the session object

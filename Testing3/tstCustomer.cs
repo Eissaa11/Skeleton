@@ -75,7 +75,7 @@ namespace Testing3
         public void OrderdetaIdPropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            DateTime TestData = DateTime.Now.Date;
+            Date TestData = Date;
             AnCustomer.Orderdate = TestData;
             Assert.AreEqual(AnCustomer.Orderdate, TestData);
         }
