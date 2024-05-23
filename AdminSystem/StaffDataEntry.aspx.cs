@@ -24,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         staff.DOB = Convert.ToDateTime(DateTime.Now);
         staff.Phoneno = Convert.ToInt32(TextBox4.Text);
         staff.Position = TextBox7.Text;
-        staff.joiningDate = Convert.ToDateTime(DateTime.Now);
+        staff.JOD = Convert.ToDateTime(DateTime.Now);
         staff.Salary = Convert.ToDecimal(TextBox8.Text);
         staff.Fulladdress = TextBox9.Text;
         staff.Gender = chkm.Checked;
