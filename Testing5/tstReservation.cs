@@ -33,7 +33,7 @@ namespace Testing5
         public void ReservationIdPropertyOK()
         {
             clsReservation Reservation = new clsReservation();
-            Int32 TestData = 1;
+            Int32 TestData = 6;
             Reservation.ReservationId = TestData;
             Assert.AreEqual(Reservation.ReservationId, TestData);
         }
@@ -41,7 +41,7 @@ namespace Testing5
         public void CustomerIdPropertyOK()
         {
             clsReservation Reservation = new clsReservation();
-            Int32 TestData = 1;    
+            Int32 TestData = 5;
             Reservation.CustomerId = TestData;
             Assert.AreEqual(Reservation.CustomerId, TestData);
         }
@@ -49,7 +49,7 @@ namespace Testing5
         public void NamePropertyOK()
         {
             clsReservation Reservation = new clsReservation();
-            string TestData = "Md Jobaer Hasan Efaz";
+            string TestData = "elham";
             Reservation.Name = TestData;
             Assert.AreEqual(Reservation.Name, TestData);
         }
@@ -57,7 +57,7 @@ namespace Testing5
         public void PhonePropertyOK()
         {
             clsReservation Reservation = new clsReservation();
-            string TestData = "07737279924";
+            string TestData = "7872387297822";
             Reservation.Phone = TestData;
             Assert.AreEqual(Reservation.Phone, TestData);
         }
@@ -65,19 +65,19 @@ namespace Testing5
         public void TableNumberPropertyOK()
         {
             clsReservation Reservation = new clsReservation();
-            Int32 TestData = 1;
+            Int32 TestData = 5;
             Reservation.TableNumber = TestData;
             Assert.AreEqual(Reservation.TableNumber, TestData);
         }
         [TestMethod]
-        public void FindeMethodOK()
+        public void FindMethodOK()
         {
             //create a instance of the class i wantt to create 
             clsReservation Reservation = new clsReservation();
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             //invoke the method
             Found = Reservation.Find(ReservationId);
             //test to see if the result is true
@@ -93,13 +93,13 @@ namespace Testing5
             //create a boolean variable to record if the data is ok (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             //invoke the method
             Found = Reservation.Find(ReservationId);
             //check the reservation id
-            if (Reservation.ReservationId != 2)
+            if (Reservation.ReservationId != 6)
             {
-                OK= false;
+                OK = false;
             }
             //test to see that result is correct
             Assert.IsTrue(OK);
@@ -110,11 +110,11 @@ namespace Testing5
             clsReservation Reservation = new clsReservation();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             Found = Reservation.Find(ReservationId);
-            if (Reservation.DateAndTime != Convert.ToDateTime("27/03/2024"))
+            if (Reservation.DateAndTime != Convert.ToDateTime("23/05/2024"))
             {
-                OK= false;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -124,11 +124,11 @@ namespace Testing5
             clsReservation Reservation = new clsReservation();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             Found = Reservation.Find(ReservationId);
-            if (Reservation.CustomerId != 1)
+            if (Reservation.CustomerId != 5)
             {
-                OK= false;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -138,11 +138,11 @@ namespace Testing5
             clsReservation Reservation = new clsReservation();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             Found = Reservation.Find(ReservationId);
-            if (Reservation.Name != "Efaz")
+            if (Reservation.Name != "elham")
             {
-                OK= false;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -152,25 +152,25 @@ namespace Testing5
             clsReservation Reservation = new clsReservation();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             Found = Reservation.Find(ReservationId);
-            if (Reservation.Phone != "0777728272827")
+            if (Reservation.Phone != "7872387297822")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestAgeFound() 
-        { 
+        public void TestAgeFound()
+        {
             clsReservation Reservation = new clsReservation();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             Found = Reservation.Find(ReservationId);
             if (Reservation.Age != true)
             {
-                OK= false;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -180,11 +180,11 @@ namespace Testing5
             clsReservation Reservation = new clsReservation();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ReservationId = 2;
+            Int32 ReservationId = 6;
             Found = Reservation.Find(ReservationId);
-            if(Reservation.TableNumber != 1)
+            if (Reservation.TableNumber != 5)
             {
-                OK= false;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
