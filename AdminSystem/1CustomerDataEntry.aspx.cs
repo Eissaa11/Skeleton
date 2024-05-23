@@ -22,7 +22,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnCustomer.FirstName= txtfname.Text;
         AnCustomer.LastName = textlname.Text;
         AnCustomer.Email = txtemail.Text;
-  AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
+        AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
         AnCustomer.Address = textaddress.Text;
         AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
         AnCustomer.Gender = chkfemale.Checked;
