@@ -69,5 +69,125 @@ namespace Testing5
             Reservation.TableNumber = TestData;
             Assert.AreEqual(Reservation.TableNumber, TestData);
         }
+        [TestMethod]
+        public void FindeMethodOK()
+        {
+            //create a instance of the class i wantt to create 
+            clsReservation Reservation = new clsReservation();
+            //create a boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 ReservationId = 2;
+            //invoke the method
+            Found = Reservation.Find(ReservationId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestReservationIdFound()
+        {
+            //create an instance of the class we want to create 
+            clsReservation Reservation = new clsReservation();
+            //create a boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a boolean variable to record if the data is ok (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReservationId = 2;
+            //invoke the method
+            Found = Reservation.Find(ReservationId);
+            //check the reservation id
+            if (Reservation.ReservationId != 2)
+            {
+                OK= false;
+            }
+            //test to see that result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDateAndTimeFound()
+        {
+            clsReservation Reservation = new clsReservation();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReservationId = 2;
+            Found = Reservation.Find(ReservationId);
+            if (Reservation.DateAndTime != Convert.ToDateTime("27/03/2024"))
+            {
+                OK= false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerIdFound()
+        {
+            clsReservation Reservation = new clsReservation();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReservationId = 2;
+            Found = Reservation.Find(ReservationId);
+            if (Reservation.CustomerId != 1)
+            {
+                OK= false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestNameFound()
+        {
+            clsReservation Reservation = new clsReservation();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReservationId = 2;
+            Found = Reservation.Find(ReservationId);
+            if (Reservation.Name != "Efaz")
+            {
+                OK= false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPhoneFound()
+        {
+            clsReservation Reservation = new clsReservation();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReservationId = 2;
+            Found = Reservation.Find(ReservationId);
+            if (Reservation.Phone != "0777728272827")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestAgeFound() 
+        { 
+            clsReservation Reservation = new clsReservation();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReservationId = 2;
+            Found = Reservation.Find(ReservationId);
+            if (Reservation.Age != true)
+            {
+                OK= false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTableNumberFound()
+        {
+            clsReservation Reservation = new clsReservation();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReservationId = 2;
+            Found = Reservation.Find(ReservationId);
+            if(Reservation.TableNumber != 1)
+            {
+                OK= false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
 }
