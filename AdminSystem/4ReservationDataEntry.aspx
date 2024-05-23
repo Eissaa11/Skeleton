@@ -27,9 +27,10 @@
         <asp:Label ID="lblTableNumber" runat="server" style="z-index: 1; left: 10px; top: 408px; position: absolute; height: 29px; width: 151px" Text="Table Number"></asp:Label>
         <asp:TextBox ID="txtTableNumber" runat="server" style="z-index: 1; left: 185px; top: 407px; position: absolute; width: 388px; height: 27px"></asp:TextBox>
         <asp:Label ID="lblAge" runat="server" style="z-index: 1; left: 10px; top: 459px; position: absolute; height: 28px" Text="Age" width="151px"></asp:Label>
-        <asp:CheckBox ID="chkAge" runat="server" style="z-index: 1; left: 188px; top: 461px; position: absolute; width: 388px; height: 32px" Text="Over 18?" />
+        <asp:CheckBox ID="chkAge" runat="server" style="z-index: 1; left: 188px; top: 461px; position: absolute; width: 388px; height: 32px" Text="Over 18?" OnCheckedChanged="chkAge_CheckedChanged" />
         <asp:Button ID="bttnOk" runat="server" OnClick="bttnOk_Click" style="z-index: 1; left: 10px; top: 593px; position: absolute; height: 36px; width: 112px" Text="OK" />
         <asp:Button ID="bttnCancel" runat="server" style="z-index: 1; left: 147px; top: 592px; position: absolute; width: 112px; height: 37px" Text="Cancel" />
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 401px; top: 499px; position: absolute; width: 138px; height: 38px" Text="Find" />
     </form>
 </body>
 </html>
