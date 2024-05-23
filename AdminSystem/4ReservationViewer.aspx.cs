@@ -21,6 +21,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Phone: " + Reservation.Phone + "<br />");
         Response.Write("Date And Time: " + Reservation.DateAndTime.ToShortDateString() + "<br />");
         Response.Write("Table Number: " + Reservation.TableNumber + "<br />");
+        Response.Write("Age: " + Reservation.Age + "<br />");
 
     }
 }
