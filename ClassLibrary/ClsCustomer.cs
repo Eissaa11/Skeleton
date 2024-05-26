@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace ClassLibrary
 {
@@ -8,7 +10,14 @@ namespace ClassLibrary
         
 
         public bool GenderPropertryOK { get; set; }
+        public string mEmailId { get; private set; }
+        public int mPhoneno { get; private set; }
+
         private Boolean mGender;
+
+        public string mFulladdress { get; private set; }
+        public DateTime mOrderDate { get; private set; }
+
         public bool Gender {
             get
             {
@@ -32,6 +41,9 @@ namespace ClassLibrary
             }
         }
         private string mFirstName;
+
+        public string mLastName { get; private set; }
+
         public string FirstName
         {
             get
@@ -102,24 +114,39 @@ namespace ClassLibrary
             }
             set
             {
-                mOrderdate= value;
+                mOrderdate = value;
             }
         }
-
-        public bool Find(int customerId)
+    
+    public bool Find(int CustomerId)
+    {
+        //create an instance of the data connection 
+        clsDataConnection DB = new clsDataConnection();
+        //add the parameter for the reservation id to search for
+        DB.AddParameter("@Customer", CustomerId);
+        //execute the stored procedure
+        DB.Execute("tblCustomer_FilterCustomerId");
+        //if one record is found (there should be either one or zero)
+        if (DB.Count == 1)
         {
-            mCustomerId= 1;
-            mFirstName = "ahmed";
-            mlastName = "Eissa";
-            mEmail = "ahmed@gmail.com";
-            mphoneno= 61;
-            maddress = "Leicester";
-            mOrderdate = Convert.ToDateTime("12/06/2000");
-            mGender = true;
+            //copy the data from the databse to the private data numbers
+            mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+            mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+            mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+            mEmailId = Convert.ToString(DB.DataTable.Rows[0]["EmailId"]);
+            mPhoneno = Convert.ToInt32(DB.DataTable.Rows[0]["Phoneno"]);
+            mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
+            mFulladdress = Convert.ToString(DB.DataTable.Rows[0]["Fulladdress"]);
+            mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAndTime"]);
 
-            // always return true
-            return true;
-       
+                //returned that everythinh worked ok
+                return true;
+        }
+        else
+        {
+            //return false indicating there is a problem
+            return false;
         }
     }
+}
 }
