@@ -117,8 +117,10 @@ namespace ClassLibrary
                 mOrderdate = value;
             }
         }
-    
-    public bool Find(int CustomerId)
+
+        public string lastname { get; set; }
+
+        public bool Find(int CustomerId)
     {
         //create an instance of the data connection 
         clsDataConnection DB = new clsDataConnection();

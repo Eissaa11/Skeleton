@@ -134,7 +134,28 @@ namespace Testing3
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.FirstName != "ahmed")
+            if (AnCustomer.FirstName != "Ahmed")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestlastnameFound()
+        {
+            //Create an instance of the class we want to create
+            ClsCustomer AnCustomer = new ClsCustomer();
+            //create a Boolean variable to store the result of the validation 
+            Boolean Found = false;
+            //crate a Boolean variable to record if the data is Ok (assume it is)
+            Boolean OK = true;
+            //create some test data to usa with the method
+            Int32 CustomerId = 1;
+            //invOke the method 
+            Found = AnCustomer.Find(CustomerId);
+            //check the address id
+            if (AnCustomer.lastname != "Eissa")
             {
                 OK = false;
             }
@@ -158,7 +179,7 @@ namespace Testing3
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.phoneno != 61)
+            if (AnCustomer.phoneno != 1234567890)
             {
                 OK = false;
             }
@@ -182,7 +203,7 @@ namespace Testing3
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Address != "Leicester")
+            if (AnCustomer.Address != "61 Cansigth road")
             {
                 OK = false;
             }
@@ -230,7 +251,7 @@ namespace Testing3
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Orderdate != Convert.ToDateTime("12/06/2000"))
+            if (AnCustomer.Orderdate != Convert.ToDateTime("16/05/2024"))
             {
                 OK = false;
             }
@@ -250,7 +271,7 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 61;
+            Int32 CustomerId = 1;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
