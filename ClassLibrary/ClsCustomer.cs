@@ -119,15 +119,16 @@ namespace ClassLibrary
         }
 
         public string lastname { get; set; }
+        public object DateAdded { get; set; }
 
         public bool Find(int CustomerId)
     {
         //create an instance of the data connection 
         clsDataConnection DB = new clsDataConnection();
         //add the parameter for the reservation id to search for
-        DB.AddParameter("@Customer", CustomerId);
+        DB.AddParameter("@CustomerId", CustomerId);
         //execute the stored procedure
-        DB.Execute("tblCustomer_FilterCustomerId");
+        DB.Execute("Sproc_tblCustomer_FilterByCustomerId");
         //if one record is found (there should be either one or zero)
         if (DB.Count == 1)
         {
