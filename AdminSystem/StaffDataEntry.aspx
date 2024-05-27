@@ -19,14 +19,14 @@
         <asp:Label ID="Label8" runat="server" style="z-index: 1; left: 617px; top: 265px; position: absolute" Text="Position" width="140px" Font-Names="Arial Black"></asp:Label>
         <asp:Label ID="Label9" runat="server" style="z-index: 1; left: 620px; top: 350px; position: absolute" Text="Salary" width="140px" Font-Names="Arial Black"></asp:Label>
         <asp:Label ID="Label10" runat="server" style="z-index: 1; left: 611px; top: 422px; position: absolute" Text="Full Address" width="140px" Font-Names="Arial Black"></asp:Label>
-        <asp:TextBox ID="TextBox2" runat="server" style="z-index: 1; left: 274px; top: 176px; position: absolute; width: 182px;"></asp:TextBox>
-        <asp:TextBox ID="TextBox3" runat="server" style="z-index: 1; left: 280px; top: 326px; position: absolute; width: 177px;"></asp:TextBox>
-        <asp:TextBox ID="TextBox4" runat="server" style="z-index: 1; left: 273px; top: 385px; position: absolute; width: 185px;"></asp:TextBox>
-        <asp:TextBox ID="TextBox5" runat="server" style="z-index: 1; left: 768px; top: 113px; position: absolute" width="168px"></asp:TextBox>
-        <asp:TextBox ID="TextBox6" runat="server" style="z-index: 1; left: 771px; top: 182px; position: absolute" width="168px"></asp:TextBox>
-        <asp:TextBox ID="TextBox7" runat="server" style="z-index: 1; left: 782px; top: 264px; position: absolute" width="168px"></asp:TextBox>
-        <asp:TextBox ID="TextBox8" runat="server" style="z-index: 1; left: 786px; top: 351px; position: absolute" width="168px"></asp:TextBox>
-        <asp:TextBox ID="TextBox9" runat="server" style="z-index: 1; left: 790px; top: 420px; position: absolute; height: 108px; width: 202px;"></asp:TextBox>
+        <asp:TextBox ID="txtlastname" runat="server" style="z-index: 1; left: 274px; top: 176px; position: absolute; width: 182px;"></asp:TextBox>
+        <asp:TextBox ID="txtdob" runat="server" style="z-index: 1; left: 280px; top: 326px; position: absolute; width: 177px;"></asp:TextBox>
+        <asp:TextBox ID="txtphonen" runat="server" style="z-index: 1; left: 273px; top: 385px; position: absolute; width: 185px;"></asp:TextBox>
+        <asp:TextBox ID="txtemailid" runat="server" style="z-index: 1; left: 768px; top: 113px; position: absolute" width="168px"></asp:TextBox>
+        <asp:TextBox ID="txtjod" runat="server" style="z-index: 1; left: 771px; top: 182px; position: absolute" width="168px"></asp:TextBox>
+        <asp:TextBox ID="txtposition" runat="server" style="z-index: 1; left: 782px; top: 264px; position: absolute" width="168px"></asp:TextBox>
+        <asp:TextBox ID="txtsalary" runat="server" style="z-index: 1; left: 786px; top: 351px; position: absolute" width="168px"></asp:TextBox>
+        <asp:TextBox ID="txtaddress" runat="server" style="z-index: 1; left: 790px; top: 420px; position: absolute; height: 108px; width: 202px;"></asp:TextBox>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 234px; top: 603px; position: absolute; width: 168px; height: 46px; right: 1416px;" Text="Save" BackColor="#3399FF" Font-Names="Arial Black" Font-Size="25px" />
         <asp:Label ID="Label12" runat="server" Font-Names="Algerian" Font-Size="50px" style="z-index: 1; left: 412px; top: 26px; position: absolute; width: 535px; height: 39px" Text="Staff Data Entry"></asp:Label>
         <p>
@@ -41,6 +41,9 @@
         <p>
             <asp:CheckBox ID="chkm" runat="server" style="z-index: 1; left: 296px; top: 231px; position: absolute" Text="Male" />
         </p>
+        <asp:Button ID="btnfind" runat="server" OnClick="btnfind_Click" style="z-index: 1; left: 1054px; top: 612px; position: absolute" Text="Find" />
+        <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 100px; top: 78px; position: absolute" Text="Staff Id"></asp:Label>
+        <asp:TextBox ID="txtstaffId" runat="server" style="z-index: 1; left: 183px; top: 74px; position: absolute; width: 122px"></asp:TextBox>
     </form>
 </body>
 </html>
