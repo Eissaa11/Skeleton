@@ -14,6 +14,7 @@
         <p>
             <asp:Label ID="lblCustomer" runat="server" Text="Customer ID" Font-Bold="True" Font-Size="Medium" width="77px"></asp:Label>
             <asp:TextBox ID="TextBox1" runat="server" Height="19px" style="margin-left: 102px; margin-top: 0px; margin-bottom: 11px;" Width="432px"></asp:TextBox>
+            <asp:Button ID="Button1" runat="server" Height="39px" style="margin-left: 81px" Text="Find" Width="88px" />
         </p>
               
         <p>
