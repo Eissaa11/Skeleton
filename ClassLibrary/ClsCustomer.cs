@@ -42,7 +42,7 @@ namespace ClassLibrary
         }
         private string mFirstName;
 
-        public string mLastName { get; private set; }
+       
 
         public string FirstName
         {
@@ -135,7 +135,7 @@ namespace ClassLibrary
             //copy the data from the databse to the private data numbers
             mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
             mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
-            mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+            mlastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
             mEmailId = Convert.ToString(DB.DataTable.Rows[0]["EmailId"]);
             mPhoneno = Convert.ToInt32(DB.DataTable.Rows[0]["Phoneno"]);
             mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
