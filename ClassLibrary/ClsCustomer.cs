@@ -136,11 +136,11 @@ namespace ClassLibrary
             mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
             mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
             mlastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
-            mEmailId = Convert.ToString(DB.DataTable.Rows[0]["EmailId"]);
-            mPhoneno = Convert.ToInt32(DB.DataTable.Rows[0]["Phoneno"]);
+            mEmail = Convert.ToString(DB.DataTable.Rows[0]["EmailId"]);
+                mphoneno = Convert.ToInt32(DB.DataTable.Rows[0]["Phoneno"]);
             mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
-            mFulladdress = Convert.ToString(DB.DataTable.Rows[0]["Fulladdress"]);
-            mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAndTime"]);
+                maddress = Convert.ToString(DB.DataTable.Rows[0]["Fulladdress"]);
+                mOrderdate = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAndTime"]);
 
                 //returned that everythinh worked ok
                 return true;
