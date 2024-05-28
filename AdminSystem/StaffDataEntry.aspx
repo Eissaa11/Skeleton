@@ -41,7 +41,7 @@
         <p>
             <asp:CheckBox ID="chkm" runat="server" style="z-index: 1; left: 296px; top: 231px; position: absolute" Text="Male" />
         </p>
-        <asp:Button ID="btnfind" runat="server" OnClick="btnfind_Click" style="z-index: 1; left: 1054px; top: 612px; position: absolute" Text="Find" />
+        <asp:Button ID="btnfind" runat="server" OnClick="btnfind_Click" style="z-index: 1; left: 1054px; top: 598px; position: absolute; width: 112px; height: 45px;" Text="Find" />
         <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 100px; top: 78px; position: absolute" Text="Staff Id"></asp:Label>
         <asp:TextBox ID="txtstaffId" runat="server" style="z-index: 1; left: 183px; top: 74px; position: absolute; width: 122px"></asp:TextBox>
     </form>
