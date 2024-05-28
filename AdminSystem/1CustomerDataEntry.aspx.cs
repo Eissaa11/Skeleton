@@ -49,34 +49,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void btnFind_Click(object sender, EventArgs e)
-    {
-        //create an instance of the address class
-        ClsCustomer AnCustomer = new ClsCustomer();
-        //create avariable to store the primary key
-        Int32 CustomerId;
-        //crate a variable to sotre the result of the find operation
-        Boolean Found = false;
-        //get the primary key entered by the user
-        CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        //find the record
-        Found = AnCustomer.Find(CustomerId);
-        if (Found == true)
-        {
-            //display the Values of the properties in the form 
-            txtfname.Text = AnCustomer.FirstName;
-            txtlname.Text = AnCustomer.LastName;
-            txtemail.Text = AnCustomer.Email;
-            txtphone.Text = AnCustomer.phoneno.ToString();
-            textaddress.Text = AnCustomer.Address;
-            textOrderdate.Text = AnCustomer.DateAdded.ToString();
-
-            // Assuming Gender is a boolean, true for female, false for male
-            chkfemale.Checked = AnCustomer.Gender;
-            chkmale.Checked = !AnCustomer.Gender;
-
-
-
-        }
-    }
 }
+
+
+
+
+    
+
+
+
