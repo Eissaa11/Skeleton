@@ -170,5 +170,100 @@ namespace ClassLibrary
                 return false;
             }
         }
+        public string Valid(string firstName, string lastName, string gender, string dOB, string emailId, string jOD, string phoneno, string position, string salary, string fullAddress)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temparary vaariable to store the data values
+            DateTime DateTemp;
+
+            // Validation for FirstName
+            if (firstName.Length == 0)
+            {
+                Error += "The FirstName may not be blank: ";
+            }
+            if (firstName.Length > 50)
+            {
+                Error += "The FirstName must be less than 50 characters: ";
+            }
+
+            // Validation for LastName
+            if (lastName.Length == 0)
+            {
+                Error += "The LastName may not be blank: ";
+            }
+            if (lastName.Length > 50)
+            {
+                Error += "The LastName must be less than 50 characters: ";
+            }
+
+            // Validation for FirstName
+            if (phoneno.Length == 0)
+            {
+                Error += "The FirstName may not be blank: ";
+            }
+            if (phoneno.Length > 50)
+            {
+                Error += "The FirstName must be less than 50 characters: ";
+            }
+
+            // Validation for EmailId
+            if (emailId.Length == 0)
+            {
+                Error += "The EmailId may not be blank: ";
+            }
+            if (emailId.Length > 60)
+            {
+                Error += "The EmailId must be less than 50 characters: ";
+            }
+
+            // Validation for Position
+            if (position.Length == 0)
+            {
+                Error += "The Position may not be blank: ";
+            }
+            if (position.Length > 50)
+            {
+                Error += "The Position must be less than 50 characters: ";
+            }
+
+            // Validation for Salary
+            if (salary.Length == 0)
+            {
+                Error += "The Salary may not be blank: ";
+            }
+            if (salary.Length > 50)
+            {
+                Error += "The Salary must be less than 50 characters: ";
+            }
+
+            // Validation for FullAddress
+            if (fullAddress.Length == 0)
+            {
+                Error += "The FullAddress may not be blank: ";
+            }
+            if (fullAddress.Length > 50)
+            {
+                Error += "The FullAddress must be less than 50 characters: ";
+            }
+
+            // Validate Date of Birth (DOB)
+            if (!DateTime.TryParse(dOB, out DateTemp))
+            {
+                Error += "Invalid Date of Birth format. Please enter a valid date.";
+            }
+            else
+            {
+                // Check if Date of Birth is in the past
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error += "The Date of Birth cannot be in the past.";
+                }
+            }
+
+            //return any error message
+            return Error;
+        }
+
     }
 }

@@ -7,6 +7,21 @@ namespace Testing2
     [TestClass]
     public class tststaff
     {
+        //good test data
+        //create some test data to pass the method
+        string FirstName = "Aravind";
+        string LastName = "Amgoth";
+        string Gender = "Male";
+        string DOB = DateTime.Now.ToShortDateString();
+        string Phoneno = "1234567890m";
+        string EmailId = "amgoth@gmail.com";
+        string JOD = DateTime.Now.ToShortDateString();
+        string Position = "Admin";
+        string Salary = "2000m";
+        string FullAddress = "Leicester";
+
+
+
         [TestMethod]
         public void InstaneOKc()
         {
@@ -356,6 +371,549 @@ namespace Testing2
             //test to see if the result is true
             Assert.IsTrue(OK);
 
+        }
+        [TestMethod]
+        public void ValidMethod()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FirstNameMinLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            string FirstName = ""; //this should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void FirstNameMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FirstNameMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FirstNameMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FirstNameMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FirstNameMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FirstNameMaxPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = new string('a', 51); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FirstNameExtremeMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FirstName = new string('a', 500); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        /////////////////
+        [TestMethod]
+        public void LastNameMinLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            string LastName = ""; //this should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void LastNameMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void LastNameMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void LastNameMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void LastNameMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void LastNameMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void LastNameMaxPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = new string('a', 51); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void LastNameExtremeMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string LastName = new string('a', 500); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        ////////////
+        [TestMethod]
+        public void PhonenoMinLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            string Phoneno = ""; //this should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhonenoMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Phoneno = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhonenoMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Phoneno = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhonenoMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Phoneno = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhonenoMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Phoneno = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhonenoMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Phoneno = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        //[TestMethod]
+        //public void PhonenoMaxPlusOne()
+        //{
+        //  clsstaff staff = new clsstaff();
+        //string Error = "";
+        //string Phoneno = "aaaaaaaa"; // This should trigger an error
+        //Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+        //Assert.AreNotEqual(Error, "");
+        //}
+        [TestMethod]
+        public void PhonenoExtremeMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Phoneno = new string('a', 500); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        ///////
+        ///
+        //[TestMethod]
+        //public void EmailIdMinLessOne()
+        //{
+        //  clsstaff staff = new clsstaff();
+        //string Error = "";
+        //string EmailId = "aaa"; // Empty email address
+        //Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+        //Assert.AreEqual(Error, "The EmailId may not be blank: ");
+        //}
+
+        [TestMethod]
+        public void EmailIdMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string EmailId = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailIdMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string EmailId = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailIdMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string EmailId = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailIdMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string EmailId = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailIdMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string EmailId = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        // [TestMethod]
+        // public void EmailIdMaxPlusOne()
+        // {
+        // clsstaff staff = new clsstaff();
+        // string Error = "";
+        // Create an email address longer than 50 characters
+        //string EmailId = "aa@gmail.com";
+        // Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+        // Assert.AreNotEqual(Error, "");
+        //}
+
+
+        ////////
+        ///
+        [TestMethod]
+        public void PositionMinLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            string Position = ""; //this should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PositionMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PositionMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PositionMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PositionMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PositionMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PositionMaxPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = new string('a', 51); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PositionExtremeMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Position = new string('a', 500); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        ///////////
+        ///
+        [TestMethod]
+        public void SalaryMinLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            string Salary = ""; //this should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void SalaryMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SalaryMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void SalaryMaxPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = new string('a', 51); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryExtremeMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string Salary = new string('a', 500); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        ///////
+        ///
+        [TestMethod]
+        public void FullAddressMinLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            String Error = "";
+            string FullAddress = ""; //this should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void FullAddressMin()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = "a"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressMinPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = "aa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressMaxLessOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = "aaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = "aaaaaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FullAddressMid()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = "aaa"; // This should not trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FullAddressMaxPlusOne()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = new string('a', 51); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressExtremeMax()
+        {
+            clsstaff staff = new clsstaff();
+            string Error = "";
+            string FullAddress = new string('a', 500); // This should trigger an error
+            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
+            Assert.AreNotEqual(Error, "");
         }
 
     }
