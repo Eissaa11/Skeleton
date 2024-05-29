@@ -8,8 +8,18 @@ namespace Testing3
 {
     [TestClass]
     public class tstCustomer
-
     {
+        //good test data
+        //create some test data to pass the method
+        string FirstName = "Ali";
+        string LastName = "Ahmed";
+        string Gender = "Male";
+        string Orderdate = DateTime.Now.ToShortDateString();
+        string Phoneno = "7440145274";
+        string EmailId = "aliahmed911@gmail.com";
+        string FullAddress = "leicester";
+    
+
         [TestMethod]
         public void InstanceOKc()
         {
@@ -36,7 +46,7 @@ namespace Testing3
         public void FirstNamePropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            String TestData = "Ahmed";
+            String TestData = "Ali";
             AnCustomer.FirstName = TestData;
             Assert.AreEqual(AnCustomer.FirstName, TestData);
         }
@@ -52,7 +62,7 @@ namespace Testing3
         public void EmailPropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            String TestData = "Ahmedbahar911@gmail.com";
+            String TestData = "aliahmed911@gmail.com";
             AnCustomer.Email = TestData;
             Assert.AreEqual(AnCustomer.Email, TestData);
 
@@ -69,7 +79,7 @@ namespace Testing3
         public void AddressPropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            String TestData = "61 canonsligh road";
+            String TestData = "leicester";
             AnCustomer.Address = TestData;
             Assert.AreEqual(AnCustomer.Address, TestData);
         }
@@ -89,7 +99,7 @@ namespace Testing3
             //create a Boolean wariable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invoke the method
             Found = AnCustomer.Find(CustomerId);
             //test to see if the result is true
@@ -105,11 +115,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.CustomerId != 1)
+            if (AnCustomer.CustomerId != 8)
             {
                 OK = false;
             }
@@ -129,11 +139,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.FirstName != "Ahmed")
+            if (AnCustomer.FirstName != "Ali")
             {
                 OK = false;
             }
@@ -154,7 +164,7 @@ namespace Testing3
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.lastname != "Eissa")
+            if (AnCustomer.lastname != "Ahmed")
             {
                 OK = false;
             }
@@ -174,11 +184,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.phoneno != 1234567890)
+            if (AnCustomer.phoneno != 744014527)
             {
                 OK = false;
             }
@@ -198,11 +208,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Address != "61 Cansigth road")
+            if (AnCustomer.Address != "leicester")
             {
                 OK = false;
             }
@@ -222,11 +232,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Email != "ahmed@gmail.com")
+            if (AnCustomer.Email != "aliahmed@gmail.com")
             {
                 OK = false;
             }
@@ -246,11 +256,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Orderdate != Convert.ToDateTime("16/05/2024"))
+            if (AnCustomer.Orderdate != Convert.ToDateTime("29/12/2024"))
             {
                 OK = false;
             }
@@ -270,7 +280,7 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
