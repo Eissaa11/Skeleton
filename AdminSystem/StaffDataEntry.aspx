@@ -33,7 +33,7 @@
             <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 101px; top: 246px; position: absolute; width: 140px" Text="Gender" Font-Names="Arial Black"></asp:Label>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 703px; top: 603px; position: absolute; height: 43px;" Text="Cancel" width="168px" BackColor="#FF3300" Font-Names="Arial Black" Font-Size="25px" />
         </p>
-        <asp:Label ID="Label11" runat="server" style="z-index: 1; left: 165px; top: 452px; position: absolute" Text="[IblError]"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 165px; top: 452px; position: absolute" Text="[IblError]"></asp:Label>
         <asp:TextBox ID="txtname" runat="server" Style="z-index: 1; left: 275px; top: 115px; position: absolute; width: 182px" OnTextChanged="txtname_TextChanged"></asp:TextBox>
         <p>
             &nbsp;</p>

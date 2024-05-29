@@ -202,7 +202,7 @@ namespace ClassLibrary
             {
                 Error += "The FirstName may not be blank: ";
             }
-            if (phoneno.Length > 50)
+            if (phoneno.Length > 13)
             {
                 Error += "The FirstName must be less than 50 characters: ";
             }
