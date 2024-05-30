@@ -120,7 +120,7 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid( string ReservationId, string Name, string Phone, string DateAndTime, string Age, string TableNumber)
+        public string Valid( string CustomerId, string Name, string Phone, string DateAndTime, string Age, string TableNumber)
         {
             //create a string variable to store the error
             String Error = "";
@@ -166,7 +166,23 @@ namespace ClassLibrary
             {
                 Error = Error + "The phone must be less that 50 characters :";
             }
-            //return any erro messages 
+            if (CustomerId.Length ==0)
+            {
+                Error = Error + "CustomerId may not be blank ;";
+            }
+            if (CustomerId.Length > 3)
+            {
+                Error = Error + "CustomerId must be less than 3 charaters :";
+            }
+            if (TableNumber.Length == 0)
+            {
+                Error = Error + "Table Number may not be blank ;";
+            }
+            if (TableNumber.Length > 2)
+            {
+                Error = Error + "Table Number must be less than 3 charaters :";
+            }
+            //return any error messages 
             return Error;
         }
     }
