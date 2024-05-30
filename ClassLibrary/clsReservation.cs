@@ -119,5 +119,55 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid( string ReservationId, string Name, string Phone, string DateAndTime, string Age, string TableNumber)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp; 
+            //if the name is blank
+            if (Name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Name may not be blank : ";
+            }
+            if (Name.Length > 50) 
+            {
+                Error = Error + "The Name must be less than 50 characters : ";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+
+
+                //copy the DateAndTime value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(DateAndTime);
+                //check to see if the date is less than today's date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The Date cannot be in past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The Date cannot be in the future :";
+                }
+            } catch
+            {
+                Error = Error + "The date was not a valid date :";
+            }
+            if (Phone.Length == 0)
+            {
+                Error = Error + "The phone may not be blank : ";
+            }
+            if (Phone.Length >50)
+            {
+                Error = Error + "The phone must be less that 50 characters :";
+            }
+            //return any erro messages 
+            return Error;
+        }
     }
 }
