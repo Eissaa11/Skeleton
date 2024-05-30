@@ -418,5 +418,131 @@ namespace Testing5
             Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
             Assert.AreEqual(Error, "");
         }
+        [TestMethod]
+        public void CustomerIdMinLessOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIdMin()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "1";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIdMinPlusOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "11";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIdMaxLessOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "12";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIdMax()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "123";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerMaxPlusOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = new string('0', 4);
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerIdMid()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "3";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberMinLessOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string TableNumber = "";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberMin()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string TableNumber = "1";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberMinPlusOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string TableNumber = "11";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberMaxLessOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string TableNumber = "5";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberMax()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string TableNumber = "15";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberPlusOne()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string TableNumber = new string('0', 3);
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void TableNumberMid()
+        {
+            clsReservation Reservation = new clsReservation();
+            String Error = "";
+            string CustomerId = "3";
+            Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+            Assert.AreEqual(Error, "");
+        }
     }
 }
