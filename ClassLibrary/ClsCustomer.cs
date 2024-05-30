@@ -122,34 +122,35 @@ namespace ClassLibrary
         public object DateAdded { get; set; }
 
         public bool Find(int CustomerId)
-    {
-        //create an instance of the data connection 
-        clsDataConnection DB = new clsDataConnection();
-        //add the parameter for the reservation id to search for
-        DB.AddParameter("@CustomerId", CustomerId);
-        //execute the stored procedure
-        DB.Execute("Sproc_tblCustomer_FilterByCustomerId");
-        //if one record is found (there should be either one or zero)
-        if (DB.Count == 1)
         {
-            //copy the data from the databse to the private data numbers
-            mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
-            mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
-            mlastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
-            mEmail = Convert.ToString(DB.DataTable.Rows[0]["EmailId"]);
-                mphoneno = Convert.ToInt32(DB.DataTable.Rows[0]["Phoneno"]);
-            mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
-                maddress = Convert.ToString(DB.DataTable.Rows[0]["Fulladdress"]);
-                mOrderdate = Convert.ToDateTime(DB.DataTable.Rows[0]["DateAndTime"]);
-
-                //returned that everythinh worked ok
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("Sproc_tblCustomer_FilterByCustomerId");
+            //If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+                mlastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
+                mOrderdate = Convert.ToDateTime(DB.DataTable.Rows[0]["Orderdate"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+              
+                mphoneno = Convert.ToInt32(DB.DataTable.Rows[0]["phoneno"]);
+               
+                maddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
                 return true;
-        }
-        else
-        {
-            //return false indicating there is a problem
-            return false;
+            }
+            //if no records was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
-}
+
 }
