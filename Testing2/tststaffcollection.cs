@@ -120,5 +120,28 @@ namespace Testing2
             //test to see that the two values are the same
             Assert.AreEqual(AllStaff.Count, 2);
         }
+        //[TestMethod]
+        //public void AddMethodOK()
+        //{
+            //clsStaffCollection AllStaff = new clsStaffCollection();
+            //clsstaff TestItem = new clsstaff();
+           /// Int32 PrimaryKey = 0;
+           // TestItem.Gender = true ;
+           // TestItem.StaffId = 1;
+           // TestItem.Phoneno = 1;
+           // TestItem.DOB = DateTime.Now;
+            //TestItem.JOD = DateTime.Now;
+           // TestItem.FirstName = "Aravind";
+            //TestItem.LastName = "Amgoth";
+            //TestItem.EmailId = "aa@gmail.com";
+           // TestItem.Position = "Admin";
+           // TestItem.Salary = 2000m;
+           // TestItem.Fulladdress = "Leicester";
+          //  AllStaff.ThisStaff = TestItem;
+         //   PrimaryKey = AllStaff.Add();
+            //TestItem.StaffId = PrimaryKey;
+           // AllStaff.ThisStaff.Find(PrimaryKey);
+         //   Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+       // }
     }
 }
