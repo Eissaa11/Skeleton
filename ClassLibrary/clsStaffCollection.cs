@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 
 namespace ClassLibrary
 {
@@ -10,41 +11,30 @@ namespace ClassLibrary
 
         public clsStaffCollection()
         {
-            clsstaff TestItem = new clsstaff();
-            //set its properties
-            TestItem.Gender = true;
-            TestItem.StaffId = 1;
-            TestItem.Phoneno = 1;
-            TestItem.DOB = DateTime.Now;
-            TestItem.JOD = DateTime.Now;
-            TestItem.FirstName = "Aravind";
-            TestItem.LastName = "Amgoth";
-            TestItem.EmailId = "aa@gmail.com";
-            TestItem.Position = "Admin";
-            TestItem.Salary = 2000m;
-            TestItem.Fulladdress = "Leicester";
-            //add the test item the test list
-            mStaffList.Add(TestItem);
-            //RE Initialise the object for some new data
-            TestItem = new clsstaff();
-            //set its properties
-            TestItem.Gender = true;
-            TestItem.StaffId = 2;
-            TestItem.Phoneno = 2;
-            TestItem.DOB = DateTime.Now;
-            TestItem.JOD = DateTime.Now;
-            TestItem.FirstName = "Ara";
-            TestItem.LastName = "Amgo";
-            TestItem.EmailId = "ara@gmail.com";
-            TestItem.Position = "Admi";
-            TestItem.Salary = 3000m;
-            TestItem.Fulladdress = "Leicestershire";
-            //add the item to the test list
-            mStaffList.Add(TestItem);
-            /////
-            ///
+            //variable for the index
+            Int32 Index = 0;
+            Int32 RecordCount = 0;
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("staff_SelectAll");
+            RecordCount = DB.Count;
+            while (Index < RecordCount)
+            {
+                clsstaff staff = new clsstaff();
+                staff.Gender = Convert.ToBoolean(DB.DataTable.Rows[Index]["Gender"]);
+                staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
+                staff.Phoneno = Convert.ToInt32(DB.DataTable.Rows[Index]["Phoneno"]);
+                staff.DOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["DOB"]);
+                staff.JOD = Convert.ToDateTime(DB.DataTable.Rows[Index]["JOD"]);
+                staff.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
+                staff.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
+                staff.EmailId = Convert.ToString(DB.DataTable.Rows[Index]["EmailId"]);
+                staff.Position = Convert.ToString(DB.DataTable.Rows[Index]["Position"]);
+                staff.Salary = Convert.ToDecimal(DB.DataTable.Rows[Index]["Salary"]);
+                staff.Fulladdress = Convert.ToString(DB.DataTable.Rows[Index]["FUllAddress"]);
+                mStaffList.Add(staff);
+                Index++;
 
-
+            }
         }
         //private data member for the list
         List<clsstaff> mStaffList = new List<clsstaff>();
