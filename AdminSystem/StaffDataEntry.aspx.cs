@@ -18,25 +18,83 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsstaff
         clsstaff staff = new clsstaff();
         //capyure the first name
-        staff.FirstName = txtname.Text;
-        staff.LastName = TextBox2.Text;
-        staff.EmailId = TextBox5.Text;
-        staff.DOB = Convert.ToDateTime(DateTime.Now);
-        staff.Phoneno = Convert.ToInt32(TextBox4.Text);
-        staff.Position = TextBox7.Text;
-        staff.JOD = Convert.ToDateTime(DateTime.Now);
-        staff.Salary = Convert.ToDecimal(TextBox8.Text);
-        staff.Fulladdress = TextBox9.Text;
-        staff.Gender = chkm.Checked;
-        staff.Gender = Chkf.Checked;
-        //store the address in the session object
-        Session["staff"] = staff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+        string FirstName = txtname.Text;
+        string LastName = txtlastname.Text;
+        string EmailId = txtemailid.Text;
+        string DOB = txtdob.Text;
+        string Phoneno = txtphonen.Text;
+        string Position = txtposition.Text;
+        string JOD = txtjod.Text;
+        string Salary = txtsalary.Text;
+        string Fulladdress = txtaddress.Text;
+        //determine gender based on the selected checkbox
+        string Gender;
+        if (chkm.Checked)
+        {
+            Gender = "Male";
+        }
+        else if (Chkf.Checked)
+        {
+            Gender = "Female";
+        }
+        else
+        {
+            Gender = "";
+        }
+        //variable  to store any error message
+        string Error = "";
+        //validate the data
+        Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, Fulladdress);
+        if (Error == "")
+        {
+            //caputure the Firstname
+            staff.FirstName = FirstName;
+            staff.LastName = LastName;
+            staff.Phoneno = Convert.ToInt32(Phoneno);
+            staff.EmailId = EmailId;
+            staff.Position = Position;
+            staff.Salary = Convert.ToDecimal(Salary);
+            staff.Fulladdress = Fulladdress;
+            staff.DOB = Convert.ToDateTime(DOB);
+            staff.JOD = Convert.ToDateTime(JOD);
+            //store the address in the session object
+            Session["staff"] = staff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtname_TextChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void btnfind_Click(object sender, EventArgs e)
+    {
+        clsstaff staff = new clsstaff();
+        Int32 StaffId;
+        Boolean Found = false;
+        StaffId = Convert.ToInt32(txtstaffId.Text);
+        Found = staff.Find(StaffId);
+        if (Found == true)
+        {
+            txtname.Text = staff.FirstName;
+            txtlastname.Text = staff.LastName;
+            txtdob.Text = staff.DOB.ToString();
+            txtphonen.Text = staff.Phoneno.ToString();
+            txtemailid.Text = staff.EmailId;
+            txtjod.Text = staff.JOD.ToString();
+            txtposition.Text = staff.Position;
+            txtsalary.Text = staff.Salary.ToString();
+            txtaddress.Text = staff.Fulladdress;
+            chkm.Checked = staff.Gender;
+            Chkf.Checked = staff.Gender;
+        }
     }
 }

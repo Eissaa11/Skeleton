@@ -1,4 +1,6 @@
-﻿using System;
+using System;
+using System.Security.Policy;
+using System.Xml.Linq;
 
 namespace ClassLibrary
 {
@@ -174,96 +176,95 @@ namespace ClassLibrary
         {
             //create a string variable to store the error
             String Error = "";
-            //create a temparary vaariable to store the data values
+            //create a temporary variable to store the date values
             DateTime DateTemp;
-
-            // Validation for FirstName
+            //if the name is blank
             if (firstName.Length == 0)
             {
-                Error += "The FirstName may not be blank: ";
+                //record the error
+                Error = Error + "The FirstName may not be blank : ";
             }
             if (firstName.Length > 50)
             {
-                Error += "The FirstName must be less than 50 characters: ";
+                Error = Error + "The firstName must be less than 50 characters : ";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+
+
+                //copy the DateAndTime value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(dOB);
+                //check to see if the date is less than today's date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The Date cannot be in past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The Date cannot be in the future :";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The Date was not a valid date :";
             }
 
-            // Validation for LastName
             if (lastName.Length == 0)
             {
-                Error += "The LastName may not be blank: ";
+                Error = Error + "The lastName may not be blank : ";
             }
             if (lastName.Length > 50)
             {
-                Error += "The LastName must be less than 50 characters: ";
+                Error = Error + "The lastName must be less that 50 characters :";
             }
-
-            // Validation for FirstName
             if (phoneno.Length == 0)
             {
-                Error += "The FirstName may not be blank: ";
+                Error = Error + "phoneno may not be blank ;";
             }
-            if (phoneno.Length > 50)
+            if (phoneno.Length > 13)
             {
-                Error += "The FirstName must be less than 50 characters: ";
+                Error = Error + "phoneno must be less than 13 charaters :";
             }
-
-            // Validation for EmailId
             if (emailId.Length == 0)
             {
-                Error += "The EmailId may not be blank: ";
+                Error = Error + "emailId Number may not be blank ;";
             }
-            if (emailId.Length > 60)
+            if (emailId.Length > 50)
             {
-                Error += "The EmailId must be less than 50 characters: ";
+                Error = Error + "emailId Number must be less than 50 charaters :";
             }
-
-            // Validation for Position
             if (position.Length == 0)
             {
-                Error += "The Position may not be blank: ";
+                Error = Error + "position Number may not be blank ;";
             }
             if (position.Length > 50)
             {
-                Error += "The Position must be less than 50 characters: ";
+                Error = Error + "position Number must be less than 50 charaters :";
             }
-
-            // Validation for Salary
             if (salary.Length == 0)
             {
-                Error += "The Salary may not be blank: ";
+                Error = Error + "salary Number may not be blank ;";
             }
             if (salary.Length > 50)
             {
-                Error += "The Salary must be less than 50 characters: ";
+                Error = Error + "salary Number must be less than 50 charaters :";
             }
-
-            // Validation for FullAddress
             if (fullAddress.Length == 0)
             {
-                Error += "The FullAddress may not be blank: ";
+                Error = Error + "fullAddress Number may not be blank ;";
             }
             if (fullAddress.Length > 50)
             {
-                Error += "The FullAddress must be less than 50 characters: ";
+                Error = Error + "fullAddress Number must be less than 50 charaters :";
             }
-
-            // Validate Date of Birth (DOB)
-            if (!DateTime.TryParse(dOB, out DateTemp))
-            {
-                Error += "Invalid Date of Birth format. Please enter a valid date.";
-            }
-            else
-            {
-                // Check if Date of Birth is in the past
-                if (DateTemp < DateTime.Now.Date)
-                {
-                    Error += "The Date of Birth cannot be in the past.";
-                }
-            }
-
-            //return any error message
+            //return any error messages 
             return Error;
         }
+
 
     }
 }
