@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
+using static System.Net.Mime.MediaTypeNames;
+using System.Xml.Linq;
 
 namespace ClassLibrary
 {
@@ -8,7 +10,14 @@ namespace ClassLibrary
         
 
         public bool GenderPropertryOK { get; set; }
+        public string mEmailId { get; private set; }
+        public int mPhoneno { get; private set; }
+
         private Boolean mGender;
+
+        public string mFulladdress { get; private set; }
+        public DateTime mOrderDate { get; private set; }
+
         public bool Gender {
             get
             {
@@ -32,6 +41,9 @@ namespace ClassLibrary
             }
         }
         private string mFirstName;
+
+       
+
         public string FirstName
         {
             get
@@ -102,24 +114,43 @@ namespace ClassLibrary
             }
             set
             {
-                mOrderdate= value;
+                mOrderdate = value;
             }
         }
 
-        public bool Find(int customerId)
-        {
-            mCustomerId= 1;
-            mFirstName = "ahmed";
-            mlastName = "Eissa";
-            mEmail = "ahmed@gmail.com";
-            mphoneno= 61;
-            maddress = "Leicester";
-            mOrderdate = Convert.ToDateTime("12/06/2000");
-            mGender = true;
+        public string lastname { get; set; }
+        public object DateAdded { get; set; }
 
-            // always return true
-            return true;
-       
+        public bool Find(int CustomerId)
+        {
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@CustomerId", CustomerId);
+            //execute the stored procedure
+            DB.Execute("Sproc_tblCustomer_FilterByCustomerId");
+            //If one record is found (there should be either one or zero)
+            if (DB.Count == 1)
+            {
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+                mlastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mGender = Convert.ToBoolean(DB.DataTable.Rows[0]["Gender"]);
+                mOrderdate = Convert.ToDateTime(DB.DataTable.Rows[0]["Orderdate"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+              
+                mphoneno = Convert.ToInt32(DB.DataTable.Rows[0]["phoneno"]);
+               
+                maddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                return true;
+            }
+            //if no records was found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
+
 }

@@ -8,8 +8,18 @@ namespace Testing3
 {
     [TestClass]
     public class tstCustomer
-
     {
+        //good test data
+        //create some test data to pass the method
+        string FirstName = "Ali";
+        string LastName = "Ahmed";
+        string Gender = "Male";
+        string Orderdate = DateTime.Now.ToShortDateString();
+        string Phoneno = "7440145274";
+        string EmailId = "aliahmed911@gmail.com";
+        string FullAddress = "leicester";
+    
+
         [TestMethod]
         public void InstanceOKc()
         {
@@ -36,7 +46,7 @@ namespace Testing3
         public void FirstNamePropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            String TestData = "Ahmed";
+            String TestData = "Ali";
             AnCustomer.FirstName = TestData;
             Assert.AreEqual(AnCustomer.FirstName, TestData);
         }
@@ -52,7 +62,7 @@ namespace Testing3
         public void EmailPropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            String TestData = "Ahmedbahar911@gmail.com";
+            String TestData = "aliahmed911@gmail.com";
             AnCustomer.Email = TestData;
             Assert.AreEqual(AnCustomer.Email, TestData);
 
@@ -69,7 +79,7 @@ namespace Testing3
         public void AddressPropertryOK()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            String TestData = "61 canonsligh road";
+            String TestData = "leicester";
             AnCustomer.Address = TestData;
             Assert.AreEqual(AnCustomer.Address, TestData);
         }
@@ -84,17 +94,16 @@ namespace Testing3
         [TestMethod]
         public void FindMethodOK()
         {
-            //Create an instance of the class we want to create
+            //create an instance of the class we want to create
             ClsCustomer AnCustomer = new ClsCustomer();
-            //create a Boolean variable to store the result of the validation 
+            //create a Boolean wariable to store the results of the validation
             Boolean Found = false;
-            //create some test data to usa with the method
-            Int32 CustomerId = 1;
-            //invOke the method 
+            //create some test data to use with the method
+            Int32 CustomerId = 8;
+            //invoke the method
             Found = AnCustomer.Find(CustomerId);
-            //test to see it if the result is true
+            //test to see if the result is true
             Assert.IsTrue(Found);
-
         }
         [TestMethod]
         public void TestCustomerIdFound()
@@ -106,11 +115,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.CustomerId != 1)
+            if (AnCustomer.CustomerId != 8)
             {
                 OK = false;
             }
@@ -130,11 +139,32 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.FirstName != "ahmed")
+            if (AnCustomer.FirstName != "Ali")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestlastnameFound()
+        {
+            //Create an instance of the class we want to create
+            ClsCustomer AnCustomer = new ClsCustomer();
+            //create a Boolean variable to store the result of the validation 
+            Boolean Found = false;
+            //crate a Boolean variable to record if the data is Ok (assume it is)
+            Boolean OK = true;
+            //create some test data to usa with the method
+            Int32 CustomerId = 8;
+            //invOke the method 
+            Found = AnCustomer.Find(CustomerId);
+            //check the address id
+            if (AnCustomer.LastName != "Ahmed")
             {
                 OK = false;
             }
@@ -154,11 +184,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.phoneno != 61)
+            if (AnCustomer.phoneno != 744014527)
             {
                 OK = false;
             }
@@ -178,11 +208,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Address != "Leicester")
+            if (AnCustomer.Address != "leicester")
             {
                 OK = false;
             }
@@ -195,26 +225,16 @@ namespace Testing3
         [TestMethod]
         public void TestEmailFound()
         {
-            //Create an instance of the class we want to create
             ClsCustomer AnCustomer = new ClsCustomer();
-            //create a Boolean variable to store the result of the validation 
-            Boolean Found = false;
-            //crate a Boolean variable to record if the data is Ok (assume it is)
-            Boolean OK = true;
-            //create some test data to usa with the method
-            Int32 CustomerId = 1;
-            //invOke the method 
+            bool Found = false;
+            bool OK = true;
+            int CustomerId = 8;
             Found = AnCustomer.Find(CustomerId);
-            //check the address id
-            if (AnCustomer.Email != "ahmed@gmail.com")
+            if (AnCustomer.Email != "aliahmed911@gmail.com")
             {
                 OK = false;
             }
-            //test to see that the result is correct
             Assert.IsTrue(OK);
-
-
-
         }
         [TestMethod]
         public void TestOrderdateFound()
@@ -226,11 +246,11 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 1;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
-            if (AnCustomer.Orderdate != Convert.ToDateTime("12/06/2000"))
+            if (AnCustomer.Orderdate != Convert.ToDateTime("29/12/2024"))
             {
                 OK = false;
             }
@@ -250,7 +270,7 @@ namespace Testing3
             //crate a Boolean variable to record if the data is Ok (assume it is)
             Boolean OK = true;
             //create some test data to usa with the method
-            Int32 CustomerId = 61;
+            Int32 CustomerId = 8;
             //invOke the method 
             Found = AnCustomer.Find(CustomerId);
             //check the address id
