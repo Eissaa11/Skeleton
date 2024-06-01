@@ -151,6 +151,11 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(string firstName, string lastName, string gender, string phoneno, string emailId, string orderdate, string fullAddress)
+        {
+            return "";
+        }
     }
 
 }
