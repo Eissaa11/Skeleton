@@ -152,10 +152,86 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(string firstName, string lastName, string gender, string phoneno, string emailId, string orderdate, string fullAddress)
+        public string Valid(string firstName, string lastName, string gender, string phoneno, string emailId,  String Orderdate, string fullAddress)
+           
         {
-            return "";
-        }
-    }
+            
+            //create a string variable to store the error
+            String Error = "";
+            //create a temporary variable to store the date values
+            DateTime DateTemp;
+            //if the name is blank
+            if (firstName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The FirstName may not be blank : ";
+            }
+            if (firstName.Length > 50)
+            {
+                Error = Error + "The firstName must be less than 50 characters : ";
+            }
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
 
+
+                //copy the DateAndTime value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(Orderdate);
+                //check to see if the date is less than today's date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The Date cannot be in past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The Date cannot be in the future :";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The Date was not a valid date :";
+            }
+
+            if (lastName.Length == 0)
+            {
+                Error = Error + "The lastName may not be blank : ";
+            }
+            if (lastName.Length > 50)
+            {
+                Error = Error + "The lastName must be less that 50 characters :";
+            }
+            if (phoneno.Length == 0)
+            {
+                Error = Error + "phoneno may not be blank ;";
+            }
+            if (phoneno.Length > 13)
+            {
+                Error = Error + "phoneno must be less than 13 charaters :";
+            }
+            if (emailId.Length == 0)
+            {
+                Error = Error + "emailId Number may not be blank ;";
+            }
+            if (emailId.Length > 50)
+            {
+                Error = Error + "emailId Number must be less than 50 charaters :";
+            }
+
+            if (fullAddress.Length == 0)
+            {
+                Error = Error + "fullAddress Number may not be blank ;";
+            }
+            if (fullAddress.Length > 50)
+            {
+                Error = Error + "fullAddress Number must be less than 50 charaters :";
+            }
+            //return any error messages 
+            return Error;
+        }
+
+
+    }
 }
