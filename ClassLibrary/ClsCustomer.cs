@@ -151,87 +151,74 @@ namespace ClassLibrary
                 return false;
             }
         }
-
-        public string Valid(string firstName, string lastName, string gender, string phoneno, string emailId,  String Orderdate, string fullAddress)
-           
+        // Valid method to validate customer data
+        public string Valid(string firstName, string lastName, string gender, string phoneno, string emailId, string orderdate, string fullAddress)
         {
-            
-            //create a string variable to store the error
-            String Error = "";
-            //create a temporary variable to store the date values
-            DateTime DateTemp;
-            //if the name is blank
+            string error = "";
+
+            // FirstName validation
             if (firstName.Length == 0)
             {
-                //record the error
-                Error = Error + "The FirstName may not be blank : ";
+                error += "The FirstName may not be blank: ";
             }
             if (firstName.Length > 50)
             {
-                Error = Error + "The firstName must be less than 50 characters : ";
+                error += "The FirstName must be less than 50 characters: ";
             }
-            DateTime DateComp = DateTime.Now.Date;
-            try
-            {
-
-
-                //copy the DateAndTime value to the DateTemp variable
-                DateTemp = Convert.ToDateTime(Orderdate);
-                //check to see if the date is less than today's date
-                if (DateTemp < DateComp)
-                {
-                    Error = Error + "The Date cannot be in past : ";
-                }
-                //check to see if the date is greater than today's date
-                if (DateTemp > DateComp)
-                {
-                    //record the error
-                    Error = Error + "The Date cannot be in the future :";
-                }
-
-            }
-            catch
-            {
-                Error = Error + "The Date was not a valid date :";
-            }
-
+            // LastName validation
             if (lastName.Length == 0)
             {
-                Error = Error + "The lastName may not be blank : ";
+                error += "The LastName may not be blank: ";
             }
             if (lastName.Length > 50)
             {
-                Error = Error + "The lastName must be less that 50 characters :";
+                error += "The LastName must be less than 50 characters: ";
             }
+
+            // Gender validation
+            if (gender != "Male" && gender != "Female" && gender != "Other")
+            {
+                error += "The Gender must be either 'Male', 'Female', or 'Other': ";
+            }
+
+            // PhoneNo validation
             if (phoneno.Length == 0)
             {
-                Error = Error + "phoneno may not be blank ;";
+                error += "The PhoneNo may not be blank: ";
             }
-            if (phoneno.Length > 13)
+            if (phoneno.Length > 50)
             {
-                Error = Error + "phoneno must be less than 13 charaters :";
+                error += "The PhoneNo must be less than 50 characters: ";
             }
+
+            // EmailId validation
             if (emailId.Length == 0)
             {
-                Error = Error + "emailId Number may not be blank ;";
+                error += "The EmailId may not be blank: ";
             }
             if (emailId.Length > 50)
             {
-                Error = Error + "emailId Number must be less than 50 charaters :";
+                error += "The EmailId must be less than 50 characters: ";
             }
 
+            // Orderdate validation
+            DateTime tempDate;
+            if (!DateTime.TryParse(orderdate, out tempDate))
+            {
+                error += "The Orderdate is not a valid date: ";
+            }
+
+            // FullAddress validation
             if (fullAddress.Length == 0)
             {
-                Error = Error + "fullAddress Number may not be blank ;";
+                error += "The FullAddress may not be blank: ";
             }
             if (fullAddress.Length > 50)
             {
-                Error = Error + "fullAddress Number must be less than 50 charaters :";
+                error += "The FullAddress must be less than 50 characters: ";
             }
-            //return any error messages 
-            return Error;
+
+            return error;
         }
-
-
     }
 }

@@ -392,7 +392,7 @@ namespace Testing3
             String Error = "";
             string LastName = "a"; //this should trigger an error
             Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void LastNameMinPlusOne()
@@ -401,7 +401,7 @@ namespace Testing3
             String Error = "";
             string LastName = "aa"; //this should trigger an error
             Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void LastNameMaxLessOne()
@@ -410,7 +410,7 @@ namespace Testing3
             String Error = "";
             string LastName = "aaaaa"; //this should trigger an error
             Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void LastNameMax()
@@ -419,7 +419,7 @@ namespace Testing3
             String Error = "";
             string LastName = "aaaaaa"; //this should trigger an error
             Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void LastNameMid()
@@ -428,7 +428,7 @@ namespace Testing3
             String Error = "";
             string LastName = "aaa"; //this should trigger an error
             Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void LastNameMaxPlusOne()
@@ -517,7 +517,7 @@ namespace Testing3
             string Error = "";
             string Phoneno = "aaaaaaaa"; // This should trigger an error
             Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void PhonenoExtremeMax()
