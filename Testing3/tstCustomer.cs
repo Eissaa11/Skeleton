@@ -453,9 +453,235 @@ namespace Testing3
 
 
         }
+        [TestMethod]
+        public void PhonenoMinLessOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            String Error = "";
+            string Phoneno = ""; //this should trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhonenoMin()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = "a"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhonenoMinPlusOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = "aa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhonenoMaxLessOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = "aaaaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhonenoMax()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = "aaaaaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhonenoMid()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = "aaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhonenoMaxPlusOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = "aaaaaaaa"; // This should trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PhonenoExtremeMax()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string Phoneno = new string('a', 500); // This should trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        ///////
+        ///
+        [TestMethod]
+        public void EmailIdMinLessOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string EmailId = ""; // Empty email address
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "The EmailId may not be blank: ");
+        }
+
+        [TestMethod]
+        public void EmailIdMin()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string EmailId = "a"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailIdMinPlusOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string EmailId = "aa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailIdMaxLessOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string EmailId = "aaaaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void EmailIdMax()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string EmailId = "aaaaaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailIdMid()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string EmailId = "aaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void EmailIdMaxPlusOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            //Create an email address longer than 50 characters
+            string EmailId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate , FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        ///////
+        ///
+        [TestMethod]
+        public void FullAddressMinLessOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            String Error = "";
+            string FullAddress = ""; //this should trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void FullAddressMin()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = "a"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressMinPlusOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = "aa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressMaxLessOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = "aaaaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressMax()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = "aaaaaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FullAddressMid()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = "aaa"; // This should not trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void FullAddressMaxPlusOne()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = new string('a', 51); // This should trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void FullAddressExtremeMax()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            string Error = "";
+            string FullAddress = new string('a', 500); // This should trigger an error
+            Error = AnCustomer.Valid(FirstName, LastName, Gender, Phoneno, EmailId, Orderdate, FullAddress);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
     }
 }
+    
+
 
 
     
