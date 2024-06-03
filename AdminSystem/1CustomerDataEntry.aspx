@@ -49,7 +49,7 @@
             <asp:CheckBox ID="chkmale" runat="server" Text="Male" Font-Bold="True" />
         </p>
         <p>
-            <asp:Label ID="Label8" runat="server" Text="[IblError]" Font-Bold="True" Font-Size="Medium"></asp:Label>
+            <asp:Label ID="lblError" runat="server" Text="[IblError]" Font-Bold="True" Font-Size="Medium"></asp:Label>
         </p>
         <p>
             <asp:Button ID="btnOk" runat="server" Height="48px" OnClick="btnOK_Click" Style="margin-left: 13px; margin-top: 30px" Text="OK" Width="183px" BackColor="#669999" Font-Bold="True" Font-Size="Medium" />

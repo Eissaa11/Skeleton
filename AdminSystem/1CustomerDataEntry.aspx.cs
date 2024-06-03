@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
+using System.Data.SqlClient;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
@@ -26,19 +27,53 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         //crate a new instance of cLsCustomer
         ClsCustomer AnCustomer = new ClsCustomer();
-        AnCustomer.FirstName = txtfname.Text;
-        AnCustomer.LastName = textlname.Text;
-        AnCustomer.Email = txtemail.Text;
-        AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
-        AnCustomer.Address = textaddress.Text;
-        AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
+        //Capture the first name 
+        String FirstName = txtfname.Text;
+        String LastName = textlname.Text;
+        String Email = txtemail.Text;
+        String phone = txtphone.Text;
+        String address = textaddress.Text;
+        String orderdate = textorderdae.Text;
+        //determine gender based on the selected checkbox
+        string Gender;
         AnCustomer.Gender = chkfemale.Checked;
-        AnCustomer.Gender = chkmale.Checked;
-        //store the address in the session object
-        Session["AnCustomer"] = AnCustomer;
-        //navigate to the view page
-        Response.Redirect("1CustomerViewer.aspx");
-
+        AnCustomer.Gender = chkfemale.Checked;
+        if (chkfemale.Checked)
+        {
+            Gender = "Male";
+        }
+        else if (chkmale.Checked)
+        {
+            Gender = "Female";
+        }
+        else
+        {
+            Gender = "";
+        }
+        //variable  to store any error message
+        string Error = "";
+        //validate the data
+        Error = AnCustomer.Valid(FirstName, LastName, Gender, phone, Email, orderdate,address);
+        if (Error == "")
+        {
+            AnCustomer.FirstName = txtfname.Text;
+            AnCustomer.LastName = textlname.Text;
+            AnCustomer.Email = txtemail.Text;
+            AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
+            AnCustomer.Address = textaddress.Text;
+            AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
+            AnCustomer.Gender = chkfemale.Checked;
+            AnCustomer.Gender = chkmale.Checked;
+            //store the address in the session object
+            Session["AnCustomer"] = AnCustomer;
+            //navigate to the view page
+            Response.Redirect("1CustomerViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
     protected void btnacncel_Click(object sender, EventArgs e)
     {
@@ -113,6 +148,8 @@ public partial class _1_DataEntry : System.Web.UI.Page
         }
     }
 }
+
+    
 
 
 
