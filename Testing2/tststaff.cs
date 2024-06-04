@@ -742,7 +742,7 @@ namespace Testing2
         {
             clsstaff staff = new clsstaff();
             string Error = "";
-            string Phoneno = "aaaaaaaa"; // This should trigger an error
+            string Phoneno = "aaaaaaaa999999"; // This should trigger an error
             Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
             Assert.AreNotEqual(Error, "");
         }
@@ -762,9 +762,9 @@ namespace Testing2
         {
             clsstaff staff = new clsstaff();
             string Error = "";
-            string EmailId = "aaa"; // Empty email address
+            string EmailId = ""; // Empty email address
             Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
-            Assert.AreEqual(Error, "The EmailId may not be blank: ");
+            Assert.AreEqual(Error, "emailId may not be blank ;");
         }
 
         [TestMethod]
@@ -821,7 +821,7 @@ namespace Testing2
             clsstaff staff = new clsstaff();
             string Error = "";
             //Create an email address longer than 50 characters
-            string EmailId = "aaaaaaaaaa";
+            string EmailId = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
             Assert.AreNotEqual(Error, "");
         }
