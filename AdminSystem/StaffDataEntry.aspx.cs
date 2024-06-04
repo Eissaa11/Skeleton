@@ -58,9 +58,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             staff.DOB = Convert.ToDateTime(DOB);
             staff.JOD = Convert.ToDateTime(JOD);
             //store the address in the session object
-            Session["staff"] = staff;
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = staff;
+            StaffList.Add();
             //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("StaffLIst.aspx");
 
         }
         else

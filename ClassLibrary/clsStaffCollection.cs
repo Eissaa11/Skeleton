@@ -75,12 +75,21 @@ namespace ClassLibrary
               mThisStaff = value;
             }
         }
-       // public int Add()
-       // {
-         //   mThisStaff.StaffId = 123;
-
-          //  return mThisStaff.StaffId;
-       // }
+        public int Add()
+        {
+           clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@DOB", mThisStaff.DOB);
+            DB.AddParameter("@Gender", mThisStaff.Gender);
+            DB.AddParameter("@Phoneno", mThisStaff.Phoneno);
+            DB.AddParameter("@JOD", mThisStaff.JOD);
+            DB.AddParameter("@EmailId", mThisStaff.EmailId);
+            DB.AddParameter("@Position", mThisStaff.Position);
+            DB.AddParameter("@FullAddress", mThisStaff.Fulladdress);
+            DB.AddParameter("@Salary", mThisStaff.Salary);
+            return DB.Execute("tblStaff_Insert");
+        }
 
 
     }
