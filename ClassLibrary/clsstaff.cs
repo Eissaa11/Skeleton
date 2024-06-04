@@ -172,7 +172,7 @@ namespace ClassLibrary
                 return false;
             }
         }
-        public string Valid(string firstName, string lastName, string gender, string dOB, string emailId, string jOD, string phoneno, string position, string salary, string fullAddress)
+        public string Valid(string firstName, string lastName, string gender, string dOB, string phoneno, string emailId, string jOD, string position, string salary, string fullAddress)
         {
             //create a string variable to store the error
             String Error = "";
@@ -188,6 +188,15 @@ namespace ClassLibrary
             {
                 Error = Error + "The firstName must be less than 50 characters : ";
             }
+            if (lastName.Length == 0)
+            {
+                Error = Error + "The lastName may not be blank : ";
+            }
+            if (lastName.Length > 50)
+            {
+                Error = Error + "The lastName must be less that 50 characters :";
+            }
+
             DateTime DateComp = DateTime.Now.Date;
             try
             {
@@ -213,14 +222,6 @@ namespace ClassLibrary
                 Error = Error + "The Date was not a valid date :";
             }
 
-            if (lastName.Length == 0)
-            {
-                Error = Error + "The lastName may not be blank : ";
-            }
-            if (lastName.Length > 50)
-            {
-                Error = Error + "The lastName must be less that 50 characters :";
-            }
             if (phoneno.Length == 0)
             {
                 Error = Error + "phoneno may not be blank ;";
@@ -231,12 +232,37 @@ namespace ClassLibrary
             }
             if (emailId.Length == 0)
             {
-                Error = Error + "emailId Number may not be blank ;";
+                Error = Error + "emailId may not be blank ;";
             }
             if (emailId.Length > 50)
             {
-                Error = Error + "emailId Number must be less than 50 charaters :";
+                Error = Error + "emailId must be less than 50 charaters :";
             }
+            DateTime Datecomp = DateTime.Now.Date;
+            try
+            {
+
+
+                //copy the DateAndTime value to the DateTemp variable
+                DateTemp = Convert.ToDateTime(jOD);
+                //check to see if the date is less than today's date
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The Date cannot be in past : ";
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateComp)
+                {
+                    //record the error
+                    Error = Error + "The Date cannot be in the future :";
+                }
+
+            }
+            catch
+            {
+                Error = Error + "The Date was not a valid date :";
+            }
+
             if (position.Length == 0)
             {
                 Error = Error + "position Number may not be blank ;";
