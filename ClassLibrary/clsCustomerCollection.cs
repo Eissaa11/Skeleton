@@ -1,11 +1,9 @@
-﻿namespace ClassLibrary
+﻿using System.Collections.Generic;
+namespace ClassLibrary
+
 {
     public class clsCustomerCollection
     {
-        public clsCustomerCollection()
-        {
-        }
-
-        public System.Collections.Generic.List<clsCustomer> CustomerList { get; set; }
+        public ClsCustomer CustomerList { get; set; }
     }
 }
