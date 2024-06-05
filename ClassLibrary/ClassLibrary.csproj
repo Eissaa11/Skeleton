@@ -46,6 +46,7 @@
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrderT.cs" />
     <Compile Include="clsReservation.cs" />
+    <Compile Include="clsReservationCollection.cs" />
     <Compile Include="clsstaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
