@@ -19,17 +19,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //create a new instance of clsReservation
         clsReservation Reservation = new clsReservation();
         //capture the name
-        Reservation.Name = txtName.Text;
-        Reservation.Phone = txtPhone.Text;
-        Reservation.ReservationId = Convert.ToInt32(txtReservationId.Text);
-        Reservation.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        Reservation.TableNumber = Convert.ToInt32(txtTableNumber.Text);
-        Reservation.DateAndTime = Convert.ToDateTime(DateTime.Now);
-        Reservation.Age = chkAge.Checked;
-        //store the name in the session object
-        Session["Reservation"] = Reservation;
-        //navigate to the view page//
-        Response.Redirect("4ReservationViewer.aspx");
+        string Name = txtName.Text;
+        string Phone = txtPhone.Text;
+        string ReservationId = txtReservationId.Text;
+        string CustomerId = txtCustomerId.Text;
+        string TableNumber = txtTableNumber.Text;
+        string DateAndTime = txtDateAndTime.Text;
+        string Age = chkAge.Text;
+        string Error = "";
+        Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
+        if (Error == "")
+        {
+            Reservation.Name = Name;
+            Reservation.Phone = Phone;
+            Reservation.ReservationId = Convert.ToInt32(ReservationId);
+            Reservation.CustomerId = Convert.ToInt32(CustomerId);
+            Reservation.TableNumber = Convert.ToInt32(TableNumber);
+            Reservation.DateAndTime = Convert.ToDateTime(DateAndTime);
+            //store the name in the session object
+            Session["Reservation"] = Reservation;
+            //navigate to the view page//
+            Response.Redirect("4ReservationViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void txtReservationId_TextChanged(object sender, EventArgs e)
