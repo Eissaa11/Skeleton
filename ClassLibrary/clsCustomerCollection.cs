@@ -64,6 +64,11 @@ namespace ClassLibrary
             }
         }
         public ClsCustomer ThisCustomer { get; set; }
+
+        public int Add()
+        {
+            throw new NotImplementedException();
+        }
     }
    
     
