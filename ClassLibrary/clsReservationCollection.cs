@@ -75,5 +75,18 @@ namespace ClassLibrary
             DB.AddParameter("@TableNumber", mThisReservation.TableNumber);
             return DB.Execute("tblReservation_Insert");
         }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ReservationId", mThisReservation.ReservationId);
+            DB.AddParameter("@CustomerId", mThisReservation.CustomerId);
+            DB.AddParameter("@Name", mThisReservation.Name);
+            DB.AddParameter("@Phone", mThisReservation.Phone);
+            DB.AddParameter("@DateAndTime", mThisReservation.DateAndTime);
+            DB.AddParameter("@Age", mThisReservation.Age);
+            DB.AddParameter("@TableNumber", mThisReservation.TableNumber);
+            DB.Execute("tblReservation_Update");
+        }
     }
 }

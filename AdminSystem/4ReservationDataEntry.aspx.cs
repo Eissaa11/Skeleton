@@ -9,9 +9,20 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 ReservationId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //get the number of the address to be processed 
+        ReservationId = Convert.ToInt32(Session["ReservationId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (ReservationId != -1)
+            {
+                //display the current data for the record
+                DisplayReservation();
+            }
+        }
     }
 
     protected void bttnOk_Click(object sender, EventArgs e)
@@ -21,7 +32,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //capture the name
         string Name = txtName.Text;
         string Phone = txtPhone.Text;
-        string ReservationId = txtReservationId.Text;
         string CustomerId = txtCustomerId.Text;
         string TableNumber = txtTableNumber.Text;
         string DateAndTime = txtDateAndTime.Text;
@@ -30,6 +40,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
         if (Error == "")
         {
+            Reservation.ReservationId = ReservationId;
             Reservation.Name = Name;
             Reservation.Phone = Phone;
             Reservation.CustomerId = Convert.ToInt32(CustomerId);
@@ -37,8 +48,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Reservation.DateAndTime = Convert.ToDateTime(DateAndTime);
             Reservation.Age = chkAge.Checked;
             clsReservationCollection ReservationList = new clsReservationCollection();
-            ReservationList.ThisReservation = Reservation;
-            ReservationList.Add();
+            if (ReservationId == -1)
+            {
+                ReservationList.ThisReservation = Reservation;
+                ReservationList.Add();
+            }
+            else
+            {
+                ReservationList.ThisReservation.Find(ReservationId);
+                ReservationList.ThisReservation = Reservation;
+                ReservationList.Update();
+            }
             //navigate to the list page/
             Response.Redirect("4ReservationList.aspx");
         }
@@ -75,5 +95,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtTableNumber.Text = Reservation.TableNumber.ToString();
             chkAge.Checked = Reservation.Age;
         }
+    }
+    void DisplayReservation()
+    {
+        clsReservationCollection Reservation = new clsReservationCollection();
+        Reservation.ThisReservation.Find(ReservationId);
+        txtReservationId.Text = Reservation.ThisReservation.ReservationId.ToString();
+        txtCustomerId.Text = Reservation.ThisReservation.CustomerId.ToString();
+        txtName.Text = Reservation.ThisReservation.Name.ToString();
+        txtPhone.Text = Reservation.ThisReservation.Phone.ToString();
+        txtDateAndTime.Text = Reservation.ThisReservation.DateAndTime.ToString();
+        chkAge.Checked = Reservation.ThisReservation.Age;
+        txtTableNumber.Text = Reservation.ThisReservation.TableNumber.ToString();
     }
 }
