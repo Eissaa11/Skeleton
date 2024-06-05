@@ -61,9 +61,9 @@ namespace Testing4
             //create some test data to assign to the property
             DateTime TestData = DateTime.Now.Date;
             //assign the data to the property
-            AnOrderT.DateAdded = TestData;
+            AnOrderT.Placed_at = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrderT.DateAdded, TestData);
+            Assert.AreEqual(AnOrderT.Placed_at, TestData);
         }
         [TestMethod]
         public void FirstnamePropertyOK()
