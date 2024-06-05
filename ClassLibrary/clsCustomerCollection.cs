@@ -23,8 +23,8 @@ namespace ClassLibrary
                 Customer.phoneno = Convert.ToInt32(DB.DataTable.Rows[Index]["Phoneno"]);
                 Customer.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
                 Customer.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
-                Customer.Email = Convert.ToString(DB.DataTable.Rows[Index]["EmailId"]);
-                Customer.Address = Convert.ToString(DB.DataTable.Rows[Index]["FUllAddress"]);
+                Customer.Email = Convert.ToString(DB.DataTable.Rows[Index]["Email"]);
+                Customer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
                 Customer.Orderdate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 mCustomerlist.Add(Customer);
                 Index++;
