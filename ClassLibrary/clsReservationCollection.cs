@@ -26,6 +26,7 @@ namespace ClassLibrary
             }
         }
         List<clsReservation> mReservationList = new List<clsReservation>();
+        clsReservation mThisReservation = new clsReservation();
         public List<clsReservation> ReservationList
         {
             get
@@ -51,6 +52,28 @@ namespace ClassLibrary
 
             }
         }
-        public clsReservation ThisReservation { get; set; }
+        public clsReservation ThisReservation
+        {
+            get
+            {
+                return mThisReservation;
+            }
+            set
+            {
+                mThisReservation = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customerid", mThisReservation.CustomerId);
+            DB.AddParameter("@Name", mThisReservation.Name);
+            DB.AddParameter("@Phone", mThisReservation.Phone);
+            DB.AddParameter("@DateAndTime", mThisReservation.DateAndTime);
+            DB.AddParameter("@Age", mThisReservation.Age);
+            DB.AddParameter("@TableNumber", mThisReservation.TableNumber);
+            return DB.Execute("tblReservation_Insert");
+        }
     }
 }
