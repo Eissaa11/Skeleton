@@ -21,7 +21,7 @@ public partial class _1_List : System.Web.UI.Page
         clsReservationCollection Reservation = new clsReservationCollection();
         lstReservationList.DataSource = Reservation.ReservationList;
         lstReservationList.DataValueField = "CustomerId";
-        lstReservationList.DataValueField = "Name";
+        lstReservationList.DataTextField = "Name";
         lstReservationList.DataBind();
     }
 
@@ -31,5 +31,24 @@ public partial class _1_List : System.Web.UI.Page
         Session["ReservationId"] = -1;
         //redirect to the data entry page
         Response.Redirect("4ReservationDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 ReservationId;
+        //if a record has been selected from the list
+        if (lstReservationList.SelectedIndex != -1)
+        {
+            //get the primary key value of the record to edit
+            ReservationId = Convert.ToInt32(lstReservationList.SelectedValue);
+            //store the data in session object
+            Session["ReservationId"] = ReservationId;
+            //redirect to the edit page
+            Response.Redirect("4ReservationDataEntry.aspx");
+        }
+        else              //if no record has been selected
+        {
+            lblError.Text = "PLease select a record from the list to edit";
+        }
     }
 }

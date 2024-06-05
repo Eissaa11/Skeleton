@@ -93,5 +93,32 @@ namespace Testing5
             AllReservation.ThisReservation.Find(PrimaryKey);
             Assert.AreEqual(AllReservation.ThisReservation, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsReservationCollection AllReservation = new clsReservationCollection();
+            clsReservation TestItem = new clsReservation();
+            Int32 PrimaryKey = 0;
+            TestItem.Age = true;
+            TestItem.ReservationId = 2;
+            TestItem.CustomerId = 1;
+            TestItem.DateAndTime = DateTime.Now;
+            TestItem.Name = "efaz";
+            TestItem.Phone = "0773828447735";
+            TestItem.TableNumber = 12;
+            AllReservation.ThisReservation = TestItem;
+            PrimaryKey = AllReservation.Add();
+            TestItem.ReservationId = PrimaryKey;
+            TestItem.Age = false;
+            TestItem.CustomerId = 1;
+            TestItem.DateAndTime = DateTime.Now;
+            TestItem.Name = "heda";
+            TestItem.Phone = "0773828449935";
+            TestItem.TableNumber = 13;
+            AllReservation.ThisReservation = TestItem;
+            AllReservation.Update();
+            AllReservation.ThisReservation.Find(PrimaryKey);
+            Assert.AreEqual(AllReservation.ThisReservation, TestItem);
+        }
     }
 }
