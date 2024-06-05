@@ -25,7 +25,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("Phone Number: " + staff.Phoneno + "<br />");
         Response.Write("Full Address: " + staff.Fulladdress + "<br />");
         Response.Write("Email ID: " + staff.EmailId + "<br />");
-  
+
 
     }
 }

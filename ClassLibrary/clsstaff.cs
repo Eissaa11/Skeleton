@@ -200,26 +200,24 @@ namespace ClassLibrary
             DateTime DateComp = DateTime.Now.Date;
             try
             {
-
-
                 //copy the DateAndTime value to the DateTemp variable
                 DateTemp = Convert.ToDateTime(dOB);
-                //check to see if the date is less than today's date
-                if (DateTemp < DateComp)
-                {
-                    Error = Error + "The Date cannot be in past : ";
-                }
                 //check to see if the date is greater than today's date
                 if (DateTemp > DateComp)
                 {
                     //record the error
-                    Error = Error + "The Date cannot be in the future :";
+                    Error = Error + "The Date of Birth cannot be in the future :";
                 }
-
+                //check if the date is extremely old (e.g., more than 100 years ago)
+                if (DateTemp < DateComp.AddYears(-100))
+                {
+                    //record the error
+                    Error = Error + "The Date of Birth is unrealistically far in the past :";
+                }
             }
             catch
             {
-                Error = Error + "The Date was not a valid date :";
+                Error = Error + "The Date of Birth was not a valid date :";
             }
 
             if (phoneno.Length == 0)

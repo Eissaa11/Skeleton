@@ -26,12 +26,12 @@
         <asp:TextBox ID="txtjod" runat="server" style="z-index: 1; left: 771px; top: 182px; position: absolute" width="168px"></asp:TextBox>
         <asp:TextBox ID="txtposition" runat="server" style="z-index: 1; left: 782px; top: 264px; position: absolute" width="168px"></asp:TextBox>
         <asp:TextBox ID="txtsalary" runat="server" style="z-index: 1; left: 786px; top: 351px; position: absolute" width="168px"></asp:TextBox>
-        <asp:TextBox ID="txtaddress" runat="server" style="z-index: 1; left: 790px; top: 420px; position: absolute; height: 108px; width: 202px;"></asp:TextBox>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 234px; top: 603px; position: absolute; width: 168px; height: 46px; right: 1416px;" Text="Save" BackColor="#3399FF" Font-Names="Arial Black" Font-Size="25px" />
+        <asp:TextBox ID="txtaddress" runat="server" style="z-index: 1; left: 790px; top: 420px; position: absolute; height: 31px; width: 171px;"></asp:TextBox>
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; left: 125px; top: 571px; position: absolute; width: 118px; height: 49px; right: 1596px;" Text="Save" BackColor="#99CCFF" Font-Names="Arial Black" Font-Size="25px" />
         <asp:Label ID="Label12" runat="server" Font-Names="Algerian" Font-Size="50px" style="z-index: 1; left: 412px; top: 26px; position: absolute; width: 535px; height: 39px" Text="Staff Data Entry"></asp:Label>
         <p>
             <asp:Label ID="Label3" runat="server" style="z-index: 1; left: 101px; top: 246px; position: absolute; width: 140px" Text="Gender" Font-Names="Arial Black"></asp:Label>
-            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 703px; top: 603px; position: absolute; height: 43px;" Text="Cancel" width="168px" BackColor="#FF3300" Font-Names="Arial Black" Font-Size="25px" />
+            <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 609px; top: 570px; position: absolute; height: 47px; width: 116px;" Text="Cancel" BackColor="#FF3300" Font-Names="Arial Black" Font-Size="25px" />
         </p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 165px; top: 452px; position: absolute" Text="[IblError]"></asp:Label>
         <asp:TextBox ID="txtname" runat="server" Style="z-index: 1; left: 275px; top: 115px; position: absolute; width: 182px" OnTextChanged="txtname_TextChanged"></asp:TextBox>
@@ -41,7 +41,7 @@
         <p>
             <asp:CheckBox ID="chkm" runat="server" style="z-index: 1; left: 296px; top: 231px; position: absolute" Text="Male" />
         </p>
-        <asp:Button ID="btnfind" runat="server" OnClick="btnfind_Click" style="z-index: 1; left: 1054px; top: 598px; position: absolute; width: 112px; height: 45px;" Text="Find" />
+        <asp:Button ID="btnfind" runat="server" OnClick="btnfind_Click" style="z-index: 1; left: 333px; top: 574px; position: absolute; width: 97px; height: 44px; right: 1409px;" Text="Find" BackColor="#99CCFF" Font-Names="Akzidenz-Grotesk Pro Bold Ext" Font-Size="20px" />
         <asp:Label ID="Label13" runat="server" style="z-index: 1; left: 100px; top: 78px; position: absolute" Text="Staff Id"></asp:Label>
         <asp:TextBox ID="txtstaffId" runat="server" style="z-index: 1; left: 183px; top: 74px; position: absolute; width: 122px"></asp:TextBox>
     </form>

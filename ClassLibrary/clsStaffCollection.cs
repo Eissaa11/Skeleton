@@ -6,17 +6,13 @@ namespace ClassLibrary
 {
     public class clsStaffCollection
     {
-
-
-
-        public clsStaffCollection()
+        void PopulateArray(clsDataConnection DB)
         {
             //variable for the index
             Int32 Index = 0;
             Int32 RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("staff_SelectAll");
             RecordCount = DB.Count;
+            mStaffList = new List<clsstaff>();
             while (Index < RecordCount)
             {
                 clsstaff staff = new clsstaff();
@@ -33,8 +29,16 @@ namespace ClassLibrary
                 staff.Fulladdress = Convert.ToString(DB.DataTable.Rows[Index]["FUllAddress"]);
                 mStaffList.Add(staff);
                 Index++;
-
             }
+        }
+
+
+        public clsStaffCollection()
+        {
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("staff_SelectAll");
+            PopulateArray(DB);
         }
         //private data member for the list
         List<clsstaff> mStaffList = new List<clsstaff>();
@@ -64,7 +68,7 @@ namespace ClassLibrary
                 //we shall worry about this later
             }
         }
-        public clsstaff ThisStaff 
+        public clsstaff ThisStaff
         {
             get
             {
@@ -72,12 +76,12 @@ namespace ClassLibrary
             }
             set
             {
-              mThisStaff = value;
+                mThisStaff = value;
             }
         }
         public int Add()
         {
-           clsDataConnection DB = new clsDataConnection();
+            clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@FirstName", mThisStaff.FirstName);
             DB.AddParameter("@LastName", mThisStaff.LastName);
             DB.AddParameter("@DOB", mThisStaff.DOB);
@@ -91,6 +95,38 @@ namespace ClassLibrary
             return DB.Execute("tblStaff_Insert");
         }
 
+        public void Update()
+        {
+
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@DOB", mThisStaff.DOB);
+            DB.AddParameter("@Gender", mThisStaff.Gender);
+            DB.AddParameter("@Phoneno", mThisStaff.Phoneno);
+            DB.AddParameter("@JOD", mThisStaff.JOD);
+            DB.AddParameter("@EmailId", mThisStaff.EmailId);
+            DB.AddParameter("@Position", mThisStaff.Position);
+            DB.AddParameter("@FullAddress", mThisStaff.Fulladdress);
+            DB.AddParameter("@Salary", mThisStaff.Salary);
+            DB.Execute("tblstaff_update");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            DB.Execute("tblstaff_Delete");
+        }
+
+        public void ReportByFirstName(string FirstName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@FirstName", FirstName);
+            DB.Execute("tblstaff_FilterByFirstName");
+            PopulateArray(DB);
+        }
 
     }
 }
