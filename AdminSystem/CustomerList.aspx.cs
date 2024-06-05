@@ -30,5 +30,11 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataBind();
     }
 
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Session["CustomerId"] = -1;
+        Response.Redirect("CustomerDataEntry.aspx");
+    }
 }
     

@@ -23,9 +23,9 @@ namespace Testing4
             //create some test data to assign to the property
             Boolean TestData = true;
             //assign the data to the property
-            AnOrderT.Active = TestData;
+            AnOrderT.Paid = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrderT.Active, TestData);
+            Assert.AreEqual(AnOrderT.Paid, TestData);
 
         }
         [TestMethod]

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="1CustomerViewer.aspx.cs" Inherits="_1Viewer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="CustomerConfirmDelete.aspx.cs" Inherits="_1_ConfirmDelete" %>
 
 <!DOCTYPE html>
 
@@ -7,8 +7,6 @@
     <title></title>
 </head>
 <body>
-    This is the Customer Viwer Pag
-
     <form id="form1" runat="server">
         <div>
         </div>
