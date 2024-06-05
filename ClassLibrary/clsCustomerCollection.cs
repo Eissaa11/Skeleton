@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 namespace ClassLibrary
 
 {
@@ -36,6 +37,8 @@ namespace ClassLibrary
         }
         //private data member for the list 
         List<ClsCustomer> mCustomerlist = new List<ClsCustomer>();
+        //private member data for thisCustomer
+        ClsCustomer mThisCustomer = new ClsCustomer();
         public List<ClsCustomer> CustomerList
         {
             get
@@ -63,15 +66,39 @@ namespace ClassLibrary
                 // we shall worry about this later
             }
         }
-        public ClsCustomer ThisCustomer { get; set; }
+        public ClsCustomer ThisCustomer
+        {
+            get
+            {
+                // return the private data
+                return mThisCustomer;
+            }
+
+            set
+            {
+                //set the private data
+                mThisCustomer = value;
+
+            }
+        }
 
         public int Add()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Firstname", mThisCustomer.FirstName);
+            DB.AddParameter("@Lastname", mThisCustomer.LastName);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@phoneno", mThisCustomer.phoneno);
+            DB.AddParameter("@Gender", mThisCustomer.Gender);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@Orderdate", mThisCustomer.Orderdate);
+
+            // execute the Query returning the primary key value
+            return DB.Execute("sproc_tblCustomer_Insert");
         }
     }
-   
     
+
        
     
 }

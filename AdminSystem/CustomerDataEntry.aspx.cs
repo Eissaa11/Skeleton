@@ -66,8 +66,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnCustomer.Gender = chkmale.Checked;
             //store the address in the session object
             Session["AnCustomer"] = AnCustomer;
-            //navigate to the view page
-            Response.Redirect("1CustomerViewer.aspx");
+            //capture phoneno 
+            AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
+            AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
+            AnCustomer.Gender = chkfemale.Checked;
+            AnCustomer.Gender = chkmale.Checked;
+            AnCustomer.Address = textaddress.Text;
+            AnCustomer.FirstName = txtfname.Text;
+            AnCustomer.LastName = textlname.Text;
+            AnCustomer.Email = txtemail.Text;
+            //create  a new instance of the coustomer collection
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            //set the thisCustomer proprty
+            CustomerList.ThisCustomer = AnCustomer;
+            //add the new  record
+            CustomerList.Add();
+            //redirect back to the list page
+            Response.Redirect("CustomerList.aspx");
+
+
+
         }
         else
         {
