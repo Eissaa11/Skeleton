@@ -15,5 +15,6 @@ namespace ClassLibrary
         public string Firstname { get; set; }
         public int Total_amount { get; set; }
         public int phoneno { get; set; }
+        public int totalamount { get; set; }
     }
 }
