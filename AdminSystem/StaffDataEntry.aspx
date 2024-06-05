@@ -34,7 +34,7 @@
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 609px; top: 570px; position: absolute; height: 47px; width: 116px;" Text="Cancel" BackColor="#FF3300" Font-Names="Arial Black" Font-Size="25px" />
         </p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 165px; top: 452px; position: absolute" Text="[IblError]"></asp:Label>
-        <asp:TextBox ID="txtname" runat="server" Style="z-index: 1; left: 275px; top: 115px; position: absolute; width: 182px" OnTextChanged="txtname_TextChanged"></asp:TextBox>
+        <asp:TextBox ID="txtname" runat="server" Style="z-index: 1; left: 275px; top: 115px; position: absolute; width: 182px" ></asp:TextBox>
         <p>
             &nbsp;</p>
         <asp:CheckBox ID="Chkf" runat="server" style="z-index: 1; left: 291px; top: 269px; position: absolute" Text="Female" />
