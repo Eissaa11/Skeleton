@@ -8,9 +8,17 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            if (StaffId != -1)
+            {
+                Displaystaff();
+            }
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -47,6 +55,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, Fulladdress);
         if (Error == "")
         {
+            staff.StaffId = StaffId;
             //caputure the Firstname
             staff.FirstName = FirstName;
             staff.LastName = LastName;
@@ -57,22 +66,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             staff.Fulladdress = Fulladdress;
             staff.DOB = Convert.ToDateTime(DOB);
             staff.JOD = Convert.ToDateTime(JOD);
-            //store the address in the session object
-            Session["staff"] = staff;
-            //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
-
+            clsStaffCollection StaffList = new clsStaffCollection();
+            if (StaffId == -1)
+            {
+                StaffList.ThisStaff = staff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(StaffId);
+                StaffList.ThisStaff = staff;
+                StaffList.Update();
+            }
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
             //display the error message
             lblError.Text = Error;
         }
-    }
-
-    protected void txtname_TextChanged(object sender, EventArgs e)
-    {
-
     }
 
     protected void btnfind_Click(object sender, EventArgs e)
@@ -96,5 +108,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
             chkm.Checked = staff.Gender;
             Chkf.Checked = staff.Gender;
         }
+    }
+    void Displaystaff()
+    {
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        StaffBook.ThisStaff.Find(StaffId);
+        txtstaffId.Text = StaffBook.ThisStaff.StaffId.ToString();
+        txtname.Text = StaffBook.ThisStaff.FirstName.ToString();
+        txtlastname.Text = StaffBook.ThisStaff.LastName.ToString();
+        txtdob.Text = StaffBook.ThisStaff.DOB.ToString();
+        txtemailid.Text = StaffBook.ThisStaff.EmailId.ToString();
+        txtjod.Text = StaffBook.ThisStaff.JOD.ToString();
+        txtposition.Text = StaffBook.ThisStaff.Position.ToString();
+        txtsalary.Text = StaffBook.ThisStaff.Salary.ToString();
+        txtaddress.Text = StaffBook.ThisStaff.Fulladdress.ToString();
+        chkm.Checked = StaffBook.ThisStaff.Gender;
+        Chkf.Checked = StaffBook.ThisStaff.Gender;
     }
 }

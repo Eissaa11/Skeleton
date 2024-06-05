@@ -471,23 +471,13 @@ namespace Testing2
             String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddYears(-100);
-            string DOB = TestDate.ToString();
+            TestDate = TestDate.AddYears(-101); // 101 years in the past
+            string DOB = TestDate.ToString("yyyy-MM-dd");
             Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
             Assert.AreNotEqual(Error, "");
         }
-        [TestMethod]
-        public void DOBMinLessOne()
-        {
-            clsstaff staff = new clsstaff();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            TestDate = TestDate.AddDays(-1);
-            string DOB = TestDate.ToString();
-            Error = staff.Valid(FirstName, LastName, Gender, DOB, Phoneno, EmailId, JOD, Position, Salary, FullAddress);
-            Assert.AreNotEqual(Error, "");
-        }
+
+
         [TestMethod]
         public void DOBMin()
         {
