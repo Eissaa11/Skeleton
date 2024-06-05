@@ -32,14 +32,15 @@ public partial class _1_DataEntry : System.Web.UI.Page
         {
             Reservation.Name = Name;
             Reservation.Phone = Phone;
-            Reservation.ReservationId = Convert.ToInt32(ReservationId);
             Reservation.CustomerId = Convert.ToInt32(CustomerId);
             Reservation.TableNumber = Convert.ToInt32(TableNumber);
             Reservation.DateAndTime = Convert.ToDateTime(DateAndTime);
-            //store the name in the session object
-            Session["Reservation"] = Reservation;
-            //navigate to the view page//
-            Response.Redirect("4ReservationViewer.aspx");
+            Reservation.Age = chkAge.Checked;
+            clsReservationCollection ReservationList = new clsReservationCollection();
+            ReservationList.ThisReservation = Reservation;
+            ReservationList.Add();
+            //navigate to the list page/
+            Response.Redirect("4ReservationList.aspx");
         }
         else
         {
