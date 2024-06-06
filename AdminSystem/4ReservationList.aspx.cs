@@ -66,4 +66,25 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsReservationCollection Reservation = new clsReservationCollection();
+        Reservation.ReportByName(txtFilter.Text);
+        lstReservationList.DataSource = Reservation.ReservationList;
+        lstReservationList.DataValueField = "ReservationId";
+        lstReservationList.DataTextField = "Name";
+        lstReservationList.DataBind();
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsReservationCollection Reservation = new clsReservationCollection();
+        Reservation.ReportByName("");
+        txtFilter.Text = "";
+        lstReservationList.DataSource = Reservation.ReservationList;
+        lstReservationList.DataValueField = "ReservationId";
+        lstReservationList.DataTextField = "Name";
+        lstReservationList.DataBind() ;
+    }
 }

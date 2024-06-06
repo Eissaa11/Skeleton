@@ -6,24 +6,12 @@ namespace ClassLibrary
     {
         public clsReservationCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
+            //object for data connection
             clsDataConnection DB =new clsDataConnection();
+            //execute the stored procedure
             DB.Execute("tblReservation_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsReservation Reservation = new clsReservation();
-                Reservation.Age = Convert.ToBoolean(DB.DataTable.Rows[Index]["Age"]);
-                Reservation.ReservationId = Convert.ToInt32(DB.DataTable.Rows[Index]["ReservationId"]);
-                Reservation.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
-                Reservation.TableNumber = Convert.ToInt32(DB.DataTable.Rows[Index]["TableNumber"]);
-                Reservation.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
-                Reservation.Phone = Convert.ToString(DB.DataTable.Rows[Index]["Phone"]);
-                Reservation.DateAndTime = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAndTime"]);
-                mReservationList.Add(Reservation);
-                Index++;
-            }
+            //populate the array list with the data table
+            PopulateArray(DB);
         }
         List<clsReservation> mReservationList = new List<clsReservation>();
         clsReservation mThisReservation = new clsReservation();
@@ -94,6 +82,35 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ReservationId", mThisReservation.ReservationId);
             DB.Execute("tblReservation_Delete");
+        }
+
+        public void ReportByName(string Name)
+        {
+            //filter records based on a full or partial name
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Name", Name);
+            DB.Execute("tblReservation_FilterByName");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mReservationList = new List<clsReservation>();
+            while (Index < RecordCount)
+            {
+                clsReservation Reservation = new clsReservation();
+                Reservation.Age = Convert.ToBoolean(DB.DataTable.Rows[Index]["Age"]);
+                Reservation.ReservationId = Convert.ToInt32(DB.DataTable.Rows[Index]["ReservationId"]);
+                Reservation.CustomerId = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerId"]);
+                Reservation.TableNumber = Convert.ToInt32(DB.DataTable.Rows[Index]["TableNumber"]);
+                Reservation.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                Reservation.Phone = Convert.ToString(DB.DataTable.Rows[Index]["Phone"]);
+                Reservation.DateAndTime = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateAndTime"]);
+                mReservationList.Add(Reservation);
+                Index++;
+            }
         }
     }
 }
