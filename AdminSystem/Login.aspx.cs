@@ -33,7 +33,7 @@ public partial class _1Viewer : System.Web.UI.Page
         }
         else if (Found == true)
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("StaffList.aspx");
         }
         else if (Found == false) 
         {
