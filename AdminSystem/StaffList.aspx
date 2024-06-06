@@ -20,6 +20,7 @@
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 69px; top: 574px; position: absolute" Text="[IblError]"></asp:Label>
          <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 270px; top: 695px; position: absolute; width: 97px; height: 30px; right: 1472px;" Text="Clear Filter" BackColor="#3399FF" Font-Names="Arial Black" Font-Size="15px" />
  <asp:Button ID="btnAplyClear" runat="server" OnClick="btnApplyClear_Click" style="z-index: 1; left: 106px; top: 694px; position: absolute; width: 102px; height: 31px; " Text="Apply Filter" BackColor="#3399FF" Font-Names="Arial Black" Font-Size="15px" />
+        <asp:Button ID="btnCancel" runat="server" BackColor="#990000" Font-Names="Arial Black" Font-Size="20px" OnClick="btnCancel_Click" style="z-index: 1; left: 441px; top: 490px; position: absolute; height: 29px" Text="Cancel" />
     </form>
 </body>
 </html>
