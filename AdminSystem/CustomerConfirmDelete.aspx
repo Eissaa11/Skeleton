@@ -10,6 +10,17 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            <asp:Label ID="Label1" runat="server" Font-Size="20px" Text="Are You sure you want to delet this record?"></asp:Label>
+        </p>
+        <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" style="z-index: 1; left: 9px; top: 208px; position: absolute; height: 33px; width: 69px" Text="Yes" />
+        <asp:Button ID="btnNo" runat="server" style="z-index: 1; left: 108px; top: 208px; position: absolute; height: 33px; width: 71px" Text="No" />
     </form>
 </body>
 </html>
