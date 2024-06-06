@@ -141,5 +141,43 @@ namespace Testing5
             Boolean Found = AllReservation.ThisReservation.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsReservationCollection AllReservation = new clsReservationCollection();
+            clsReservationCollection FilterReservation = new clsReservationCollection();
+            FilterReservation.ReportByName("");
+            Assert.AreEqual(AllReservation.Count, FilterReservation.Count);
+        }
+        [TestMethod]
+        public void ReportByNameNoneMethodOK()
+        {
+            clsReservationCollection FilterReservation = new clsReservationCollection();
+            FilterReservation.ReportByName("xxx xxx");
+            Assert.AreEqual(0, FilterReservation.Count);
+        }
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsReservationCollection FilterReservation = new clsReservationCollection();
+            Boolean OK = true;
+            FilterReservation.ReportByName("yyy yyy");
+            if (FilterReservation.Count == 2)
+            {
+                if (FilterReservation.ReservationList[0].ReservationId != 64)
+                {
+                    OK = false;
+                }
+                if (FilterReservation.ReservationList[1].ReservationId != 65) 
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
