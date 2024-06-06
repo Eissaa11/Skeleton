@@ -190,8 +190,44 @@ namespace Testing3
             Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.IsFalse(Found);
         }
-
-
+        [TestMethod]
+        public void ReportByFirstNameMethodOK()
+        {
+            clsCustomerCollection AllCustomer = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            FilteredCustomer.ReportByFirstName("");
+            Assert.AreEqual(AllCustomer.Count, FilteredCustomer.Count);
+        }
+        [TestMethod]
+        public void ReportByFirstNameNoneFound()
+        {
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            FilteredCustomer.ReportByFirstName("xxx xxx");
+            Assert.AreEqual(0, FilteredCustomer.Count);
+        }
+        [TestMethod]
+        public void ReportByFirstNameTestDataFound()
+        {
+            clsCustomerCollection FilteredFirstName = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredFirstName.ReportByFirstName("yyy yyy");
+            if (FilteredFirstName.Count == 2)
+            {
+                if (FilteredFirstName.CustomerList[0].CustomerId != 8)
+                {
+                    OK = false;
+                }
+                if (FilteredFirstName.CustomerList[1].CustomerId != 9)
+                {
+                    OK = false;
+                }
+                else
+                {
+                    OK = false;
+                }
+                Assert.IsTrue(OK);
+            }
+        }
 
 
     }

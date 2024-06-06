@@ -70,6 +70,29 @@ public partial class _1_List : System.Web.UI.Page
         }
 
     }
+
+    protected void btnFilter_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+        AnCustomer.ReportByFirstName(txtFilter.Text);
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        lstCustomerList.DataValueField = "CustomerId";
+        lstCustomerList.DataTextField = "FirstName";
+        lstCustomerList.DataBind(); 
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection AnCustomer = new clsCustomerCollection();
+         AnCustomer.ReportByFirstName("");
+        txtFilter.Text = "";
+        lstCustomerList.DataSource = AnCustomer.CustomerList;
+        lstCustomerList.DataValueField = "CustomerId";
+        lstCustomerList.DataTextField = "FirstName";
+        lstCustomerList.DataBind(); 
+
+
+    }
 }
 
     
