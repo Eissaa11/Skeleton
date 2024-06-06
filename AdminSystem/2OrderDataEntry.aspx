@@ -15,6 +15,7 @@
             <asp:TextBox ID="txtOrder_Id" runat="server" OnTextChanged="TextBox1_TextChanged" style="z-index: 1; left: 119px; top: 47px; position: absolute"></asp:TextBox>
             <asp:Label ID="lblCustomerId" runat="server" style="z-index: 1; left: 32px; top: 88px; position: absolute" Text="CustomerId" width="83px"></asp:Label>
             <asp:TextBox ID="txtCustomerId" runat="server" style="z-index: 1; left: 119px; top: 85px; position: absolute"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 369px; top: 79px; position: absolute; width: 80px; height: 34px" Text="Find" />
         </p>
         <p>
             &nbsp;</p>

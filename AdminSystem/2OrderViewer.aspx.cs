@@ -16,7 +16,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnOrderT.CustomerId);
         Response.Write(AnOrderT.Order_Id);
         Response.Write(AnOrderT.Placed_at);
-        Response.Write(AnOrderT.phoneno);
+        Response.Write(AnOrderT.Phoneno);
         Response.Write(AnOrderT.Paid);
         Response.Write(AnOrderT.Total_amount);
     }
