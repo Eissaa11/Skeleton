@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -52,6 +54,22 @@ public partial class _1_List : System.Web.UI.Page
             }
 
         }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 CustomerId;
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["CustomerId"] = CustomerId;
+            Response.Redirect("CustomerConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+
     }
+}
 
     

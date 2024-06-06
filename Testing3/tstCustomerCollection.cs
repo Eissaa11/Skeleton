@@ -155,10 +155,46 @@ namespace Testing3
 
 
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            // Create an instance of the customer collection
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            ClsCustomer TestItem = new ClsCustomer();
+            Int32 PrimaryKey = 0;
+
+            // Set properties of the test item
+            TestItem.Gender = true;
+            TestItem.CustomerId = 1;
+            TestItem.phoneno = 123444;
+            TestItem.Orderdate = DateTime.Now;
+            TestItem.FirstName = "Ahmed";
+            TestItem.LastName = "Ahmed";
+            TestItem.Email = "ahmed@gmail.com";
+            TestItem.Address = "Leicester";
+
+            // Set ThisCustomer to the test data
+            AllCustomers.ThisCustomer = TestItem;
+
+            // Add the record
+            PrimaryKey = AllCustomers.Add();
+            TestItem.CustomerId = PrimaryKey;
+
+            // Find the record
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+
+            // Delete the record
+            AllCustomers.Delete();
+
+            // Verify the record has been deleted
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
 
 
 
     }
 
-       
+
 }
