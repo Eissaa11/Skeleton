@@ -49,7 +49,7 @@ namespace ClassLibrary
                 return mPaid;
             }
             set
-            {//this line of code allows data into the property
+            {
                 mPaid = value;
             }
         }
