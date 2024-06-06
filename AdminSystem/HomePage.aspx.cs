@@ -14,7 +14,7 @@ public partial class HomePage : System.Web.UI.Page
 
     protected void btnStaffList_Click(object sender, EventArgs e)
     {
-        Response.Redirect("StaffList.aspx");
+        Response.Redirect("Login.aspx");
     }
 
     protected void btnOrders_Click(object sender, EventArgs e)
