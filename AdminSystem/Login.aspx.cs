@@ -10,7 +10,7 @@ public partial class _1Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        
     }
 
     protected void btnlogin_Click(object sender, EventArgs e)
@@ -22,6 +22,7 @@ public partial class _1Viewer : System.Web.UI.Page
         UserName = Convert.ToString(txtUserName.Text);  
         Password = Convert.ToString(txtPassword.Text);
         Found = User.FindUser(UserName, Password);
+        Session["User"] = User;
         if(txtUserName.Text == "")
         {
             lblError.Text = "Please Enter the UserName";
@@ -32,7 +33,7 @@ public partial class _1Viewer : System.Web.UI.Page
         }
         else if (Found == true)
         {
-            Response.Redirect("StaffList.aspx");
+            Response.Redirect("HomePage.aspx");
         }
         else if (Found == false) 
         {
