@@ -34,4 +34,9 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
             //lblError.Text = "Customer not found";
         }
     }
+
+    protected void btnNo_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("CustomerList.aspx");
+    }
 }

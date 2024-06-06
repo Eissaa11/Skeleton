@@ -1,21 +1,22 @@
-﻿ using System;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 namespace ClassLibrary
 
 {
+
     //constructor for the class
     public class clsCustomerCollection
     {
 
-        public clsCustomerCollection()
+        void PopulateArray(clsDataConnection DB)
         {
             //variable for the index
             Int32 Index = 0;
             Int32 RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblCustomer_SelectAll");
             RecordCount = DB.Count;
+            mCustomerlist = new List<ClsCustomer> ();
             while (Index < RecordCount)
             {
                 ClsCustomer Customer = new ClsCustomer();
@@ -29,11 +30,14 @@ namespace ClassLibrary
                 Customer.Orderdate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
                 mCustomerlist.Add(Customer);
                 Index++;
-
             }
+        }
+        public clsCustomerCollection()
+        {
 
-
-
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblCustomer_SelectAll");
+            PopulateArray(DB);
         }
         //private data member for the list 
         List<ClsCustomer> mCustomerlist = new List<ClsCustomer>();
@@ -119,6 +123,14 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@CustomerId", mThisCustomer.CustomerId);
             DB.Execute("sproc_tblCustomer_Delete");
+        }
+
+        public void ReportByFirstName(string FirstName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Firstname", FirstName);
+            DB.Execute("tblCutomer_FilterByFirstname");
+            PopulateArray(DB);
         }
     }
     
