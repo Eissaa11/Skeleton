@@ -9,6 +9,6 @@ public partial class _6Viewer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        //create anew instance of clsOrdIN
     }
 }
