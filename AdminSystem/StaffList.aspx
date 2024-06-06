@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
-                <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 41px; top: 634px; position: absolute; width: 102px; height: 16px;" Text="Enter FirstName"></asp:Label>
+                <asp:Label ID="Label2" runat="server" style="z-index: 1; left: 41px; top: 634px; position: absolute; width: 148px; height: 26px;" Text="Enter FirstName"></asp:Label>
 
                 <asp:TextBox ID="txtFilter" runat="server" style="z-index: 1; left: 203px; top: 634px; position: absolute; width: 182px;"></asp:TextBox>
         <asp:ListBox ID="lstStaffList" runat="server" style="z-index: 1; left: 10px; top: 37px; position: absolute; height: 405px; width: 454px"></asp:ListBox>
