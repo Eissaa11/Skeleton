@@ -99,5 +99,172 @@ namespace Testing6
             //test to see that the two values are the same
             Assert.AreEqual(AnOrdIN.Custname, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestOrd_idFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //test to see if the result is true
+            if (AnOrdIN.Ord_id != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void OrdtimeFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //ckeck the Ordtime property
+            if (AnOrdIN.Ordtime != Convert.ToDateTime("06/06/2024"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustnameFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //ckeck the Custname property
+            if (AnOrdIN.Custname != "John Tim")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TblNOFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //ckeck the Custname property
+            if (AnOrdIN.TblNO != Convert.ToInt32("10"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustIDFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //ckeck the CustID property
+            if (AnOrdIN.CustID != Convert.ToInt32("15"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void Total_amtFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //ckeck the Total_amt property
+            if (AnOrdIN.Total_amt != 30)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ReserveFound()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //create Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 Ord_id = 21;
+            //invoke the method
+            Found = AnOrdIN.Find(Ord_id);
+            //ckeck its reserve or not
+            if (AnOrdIN.Reserve != Convert.ToBoolean("True"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
