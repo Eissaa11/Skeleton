@@ -57,7 +57,7 @@
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:Button ID="btnacncel" runat="server" BackColor="#0099CC" Height="49px"  Text="Cancel" Width="140px" Font-Bold="True" Font-Size="Medium" />
             
-            <asp:Button ID="Button1" runat="server" Height="48px" style="margin-left: 81px" Text="Find" Width="132px" BackColor="#660066"  />
+            <asp:Button ID="Button1" runat="server" Height="48px" style="margin-left: 81px" Text="Find" Width="132px" BackColor="#660066" OnClick="Button1_Click"  />
             
         </p>
         <p>

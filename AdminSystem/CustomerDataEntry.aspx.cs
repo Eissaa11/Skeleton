@@ -158,4 +158,40 @@ public partial class _1_DataEntry : System.Web.UI.Page
             lblError.Text = "Invalid Customer ID";
         }
     }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        // Create an instance of the customer class
+        ClsCustomer AnCustomer = new ClsCustomer();
+
+        // Try to parse the customer ID entered by the user
+        if (Int32.TryParse(TextBox1.Text, out CustomerId))
+        {
+            // Find the customer record
+            if (AnCustomer.Find(CustomerId))
+            {
+                // Display the values of the properties in the form
+                txtfname.Text = AnCustomer.FirstName;
+                textlname.Text = AnCustomer.LastName;
+                txtemail.Text = AnCustomer.Email;
+                txtphone.Text = AnCustomer.phoneno.ToString();
+                textaddress.Text = AnCustomer.Address;
+                textorderdae.Text = AnCustomer.Orderdate.ToString("yyyy-MM-dd");
+
+                // Set gender checkboxes
+                chkfemale.Checked = AnCustomer.Gender;
+                chkmale.Checked = !AnCustomer.Gender;
+            }
+            else
+            {
+                // Display an error message if the customer was not found
+                lblError.Text = "Customer not found";
+            }
+        }
+        else
+        {
+            // Display an error message if the customer ID is not valid
+            lblError.Text = "Invalid Customer ID";
+        }
+    }
 }
