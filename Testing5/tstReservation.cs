@@ -246,7 +246,7 @@ namespace Testing5
         {
             clsReservation Reservation = new clsReservation();
             String Error = "";
-            string Name = "eeeee";
+            string Name = new string ('e', 49);
             Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
             Assert.AreEqual(Error, "");
         }
@@ -255,7 +255,7 @@ namespace Testing5
         {
             clsReservation Reservation = new clsReservation();
             String Error = "";
-            string Name = "eeeeee";
+            string Name = new string ('e', 50);
             Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
             Assert.AreEqual(Error, "");
         }
@@ -264,7 +264,7 @@ namespace Testing5
         {
             clsReservation Reservation = new clsReservation();
             String Error = "";
-            string Name = "eee";
+            string Name = new string ('e',25);
             Error = Reservation.Valid(CustomerId, Name, Phone, DateAndTime, Age, TableNumber);
             Assert.AreEqual(Error, "");
         }
