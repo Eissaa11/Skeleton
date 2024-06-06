@@ -20,7 +20,7 @@ public partial class _1_List : System.Web.UI.Page
     {
         clsReservationCollection Reservation = new clsReservationCollection();
         lstReservationList.DataSource = Reservation.ReservationList;
-        lstReservationList.DataValueField = "CustomerId";
+        lstReservationList.DataValueField = "ReservationId";
         lstReservationList.DataTextField = "Name";
         lstReservationList.DataBind();
     }
@@ -49,6 +49,21 @@ public partial class _1_List : System.Web.UI.Page
         else              //if no record has been selected
         {
             lblError.Text = "PLease select a record from the list to edit";
+        }
+    }
+
+    protected void btnDeelete_Click(object sender, EventArgs e)
+    {
+        Int32 ReservationId;
+        if (lstReservationList.SelectedIndex != -1)
+        {
+            ReservationId = Convert.ToInt32(lstReservationList.SelectedValue);
+            Session["ReservationId"] = ReservationId;
+            Response.Redirect("4ReservationConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
         }
     }
 }

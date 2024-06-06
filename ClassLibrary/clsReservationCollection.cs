@@ -88,5 +88,12 @@ namespace ClassLibrary
             DB.AddParameter("@TableNumber", mThisReservation.TableNumber);
             DB.Execute("tblReservation_Update");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ReservationId", mThisReservation.ReservationId);
+            DB.Execute("tblReservation_Delete");
+        }
     }
 }
