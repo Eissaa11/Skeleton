@@ -17,6 +17,9 @@ public partial class _1_List : System.Web.UI.Page
             //update the list box
             Displaystaff();
         }
+        clsStaffUser User = new clsStaffUser();
+        User = (clsStaffUser)Session["User"];
+        Response.Write("Logged in as: " + User.UserName);
     }
     void Displaystaff()
     {
@@ -91,5 +94,10 @@ public partial class _1_List : System.Web.UI.Page
         lstStaffList.DataValueField = "StaffId";
         lstStaffList.DataTextField = "FirstName";
         lstStaffList.DataBind();
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("HomePage.aspx");
     }
 }

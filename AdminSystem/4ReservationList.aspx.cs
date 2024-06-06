@@ -15,6 +15,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayReservation();
         }
+        clsCustomerUser User = new clsCustomerUser();
+        User = (clsCustomerUser)Session["User"];
+        Response.Write("Logged in as: " + User.UserName);
     }
     void DisplayReservation()
     {
@@ -86,5 +89,10 @@ public partial class _1_List : System.Web.UI.Page
         lstReservationList.DataValueField = "ReservationId";
         lstReservationList.DataTextField = "Name";
         lstReservationList.DataBind() ;
+    }
+
+    protected void rtnHomePage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("HomePage.aspx");
     }
 }

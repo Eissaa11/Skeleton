@@ -21,6 +21,7 @@
         <asp:Label ID="lblApply" runat="server" Font-Size="20px" style="z-index: 1; left: 466px; top: 88px; position: absolute; height: 29px; width: 148px" Text="Enter a Name"></asp:Label>
         <asp:Button ID="btnApplyFilter" runat="server" BackColor="#663300" BorderColor="Black" Font-Size="20px" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 489px; top: 157px; position: absolute" Text="Apply Filter" />
         <asp:Button ID="btnClearFilter" runat="server" BackColor="#663300" BorderColor="Black" Font-Size="20px" OnClick="btnClearFilter_Click" style="z-index: 1; left: 674px; top: 157px; position: absolute" Text="Clear Filter" />
+        <asp:Button ID="rtnHomePage" runat="server" BackColor="#336600" BorderColor="Black" Font-Size="20px" OnClick="rtnHomePage_Click" style="z-index: 1; left: 490px; top: 248px; position: absolute" Text="Return to Home Page" />
     </form>
 </body>
 </html>
