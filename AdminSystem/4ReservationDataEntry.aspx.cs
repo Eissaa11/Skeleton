@@ -108,4 +108,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         chkAge.Checked = Reservation.ThisReservation.Age;
         txtTableNumber.Text = Reservation.ThisReservation.TableNumber.ToString();
     }
+
+    protected void rtnHomePage_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("HomePage.aspx");
+    }
 }
