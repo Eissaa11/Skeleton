@@ -50,6 +50,7 @@
     <Compile Include="clsReservationCollection.cs" />
     <Compile Include="clsstaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
+    <Compile Include="clsStaffUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
