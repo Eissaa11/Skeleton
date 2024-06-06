@@ -31,6 +31,9 @@
         <asp:Button ID="bttnOk" runat="server" OnClick="bttnOk_Click" style="z-index: 1; left: 10px; top: 593px; position: absolute; height: 36px; width: 112px" Text="OK" BackColor="#666666" BorderColor="Black" Font-Size="20px" />
         <asp:Button ID="bttnCancel" runat="server" style="z-index: 1; left: 147px; top: 592px; position: absolute; width: 112px; height: 37px" Text="Cancel" BackColor="Gray" BorderColor="Black" Font-Size="20px" />
         <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 401px; top: 499px; position: absolute; width: 138px; height: 38px" Text="Find" BackColor="Yellow" BorderColor="Black" Font-Size="20px" />
+        <p>
+            <asp:Button ID="rtnHomePage" runat="server" BackColor="#336600" BorderColor="Black" Font-Size="20px" OnClick="rtnHomePage_Click" style="z-index: 1; left: 369px; top: 592px; position: absolute" Text="Return to Home Page" />
+        </p>
     </form>
 </body>
 </html>
