@@ -1,178 +1,161 @@
 ﻿using ClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using ClassLibrary;
-using System.Data.SqlClient;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
-    public object txtCustomerId { get; private set; }
-    public object txtlname { get; private set; }
-    public object textOrderdate { get; private set; }
-    public object chkGender { get; private set; }
-    public object txtphoneno { get; private set; }
-    public object txtDateAndTime { get; private set; }
+    Int32 CustomerId;
 
     protected void Page_Load(object sender, EventArgs e)
     {
+        // Retrieve CustomerId from the session
+        CustomerId = Convert.ToInt32(Session["CustomerId"]);
 
+        if (!IsPostBack)
+        {
+            // If CustomerId is not -1, it means we are editing an existing customer
+            if (CustomerId != -1)
+            {
+                DisplayCustomer();
+            }
+        }
+    }
+
+    void DisplayCustomer()
+    {
+        // Create an instance of the customer collection
+        clsCustomerCollection CustomerCollection = new clsCustomerCollection();
+
+        // Find the specific customer
+        bool found = CustomerCollection.ThisCustomer.Find(CustomerId);
+        if (found)
+        {
+            // Populate the form fields with customer data
+            TextBox1.Text = CustomerCollection.ThisCustomer.CustomerId.ToString();
+            txtfname.Text = CustomerCollection.ThisCustomer.FirstName;
+            textlname.Text = CustomerCollection.ThisCustomer.LastName;
+            txtemail.Text = CustomerCollection.ThisCustomer.Email;
+            txtphone.Text = CustomerCollection.ThisCustomer.phoneno.ToString();
+            textaddress.Text = CustomerCollection.ThisCustomer.Address;
+            textorderdae.Text = CustomerCollection.ThisCustomer.Orderdate.ToString("yyyy-MM-dd");
+
+            // Set gender checkboxes
+            chkfemale.Checked = CustomerCollection.ThisCustomer.Gender;
+            chkmale.Checked = !CustomerCollection.ThisCustomer.Gender;
+        }
+        else
+        {
+            lblError.Text = "Customer not found";
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-
-        //crate a new instance of cLsCustomer
+        // Create a new instance of clsCustomer
         ClsCustomer AnCustomer = new ClsCustomer();
-        //Capture the first name 
+
+        // Capture form data
         String FirstName = txtfname.Text;
         String LastName = textlname.Text;
         String Email = txtemail.Text;
         String phone = txtphone.Text;
         String address = textaddress.Text;
         String orderdate = textorderdae.Text;
-        //determine gender based on the selected checkbox
-        string Gender;
-        AnCustomer.Gender = chkfemale.Checked;
-        AnCustomer.Gender = chkfemale.Checked;
-        if (chkfemale.Checked)
+
+        // Determine gender
+        String Gender;
+        if (chkmale.Checked)
         {
             Gender = "Male";
         }
-        else if (chkmale.Checked)
+        else if (chkfemale.Checked)
         {
-            Gender = "Female";
+            Gender = "female";
         }
         else
         {
             Gender = "";
         }
-        //variable  to store any error message
-        string Error = "";
-        //validate the data
-        Error = AnCustomer.Valid(FirstName, LastName, Gender, phone, Email, orderdate,address);
+        // Validate data
+        string Error = AnCustomer.Valid(FirstName, LastName, Gender, phone, Email, orderdate, address);
+
         if (Error == "")
         {
-            AnCustomer.FirstName = txtfname.Text;
-            AnCustomer.LastName = textlname.Text;
-            AnCustomer.Email = txtemail.Text;
-            AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
-            AnCustomer.Address = textaddress.Text;
-            AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
-            AnCustomer.Gender = chkfemale.Checked;
-            AnCustomer.Gender = chkmale.Checked;
-            //store the address in the session object
-            Session["AnCustomer"] = AnCustomer;
-            //capture phoneno 
-            AnCustomer.phoneno = Convert.ToInt32(txtphone.Text);
-            AnCustomer.Orderdate = Convert.ToDateTime(DateTime.Now);
-            AnCustomer.Gender = chkfemale.Checked;
-            AnCustomer.Gender = chkmale.Checked;
-            AnCustomer.Address = textaddress.Text;
-            AnCustomer.FirstName = txtfname.Text;
-            AnCustomer.LastName = textlname.Text;
-            AnCustomer.Email = txtemail.Text;
-            //create  a new instance of the coustomer collection
+            // No validation errors, so populate the customer object
+            AnCustomer.CustomerId = CustomerId;
+            AnCustomer.FirstName = FirstName;
+            AnCustomer.LastName = LastName;
+            AnCustomer.Email = Email;
+            AnCustomer.phoneno = Convert.ToInt32(phone);
+            AnCustomer.Address = address;
+            AnCustomer.Orderdate = Convert.ToDateTime(orderdate);
+          //  AnCustomer.Gender = Convert.ToBoolean(Gender);
+
+            // Create a new instance of the customer collection
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //set the thisCustomer proprty
-            CustomerList.ThisCustomer = AnCustomer;
-            //add the new  record
-            CustomerList.Add();
-            //redirect back to the list page
+
+            // If adding a new customer, add the record
+            if (CustomerId == -1)
+            {
+                CustomerList.ThisCustomer = AnCustomer;
+                CustomerList.Add();
+            }
+            // Otherwise, update the existing record
+            else
+            {
+                CustomerList.ThisCustomer = AnCustomer;
+                CustomerList.Update();
+            }
+
+            // Redirect back to the customer list page
             Response.Redirect("CustomerList.aspx");
-
-
-
         }
         else
         {
-            //display the error message
+            // Display validation errors
             lblError.Text = Error;
         }
     }
-    protected void btnacncel_Click(object sender, EventArgs e)
+
+    protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        // Redirect back to the customer list page without saving
+        Response.Redirect("CustomerList.aspx");
     }
-
-    protected void TextBox8_TextChanged(object sender, EventArgs e)
-    {
-
-    }
-
 
     protected void btnFind_Click(object sender, EventArgs e)
     {
-        //create an instance of the address class
+        // Create an instance of the customer class
         ClsCustomer AnCustomer = new ClsCustomer();
-        //create avariable to store the primary key
-        Int32 CustomerId;
-        //crate a variable to sotre the result of the find operation
-        Boolean Found = false;
-        //get the primary key entered by the user
-        CustomerId = Convert.ToInt32(TextBox1.Text);
-        //find the record
-        Found = AnCustomer.Find(CustomerId);
-        if (Found == true)
+
+        // Try to parse the customer ID entered by the user
+        if (Int32.TryParse(TextBox1.Text, out CustomerId))
         {
-            //display the Values of the properties in the form 
-            txtfname.Text = AnCustomer.FirstName;
-            textlname.Text = AnCustomer.LastName;
-            txtemail.Text = AnCustomer.Email;
-            txtphone.Text = AnCustomer.phoneno.ToString();
-            textaddress.Text = AnCustomer.Address;
-            textorderdae.Text = AnCustomer.DateAdded.ToString();
+            // Find the customer record
+            if (AnCustomer.Find(CustomerId))
+            {
+                // Display the values of the properties in the form
+                txtfname.Text = AnCustomer.FirstName;
+                textlname.Text = AnCustomer.LastName;
+                txtemail.Text = AnCustomer.Email;
+                txtphone.Text = AnCustomer.phoneno.ToString();
+                textaddress.Text = AnCustomer.Address;
+                textorderdae.Text = AnCustomer.Orderdate.ToString("yyyy-MM-dd");
 
-            // Assuming Gender is a boolean, true for female, false for male
-            chkfemale.Checked = AnCustomer.Gender;
-            chkmale.Checked = !AnCustomer.Gender;
-
-
-
+                // Set gender checkboxes
+                chkfemale.Checked = AnCustomer.Gender;
+                chkmale.Checked = !AnCustomer.Gender;
+            }
+            else
+            {
+                // Display an error message if the customer was not found
+                lblError.Text = "Customer not found";
+            }
         }
-    }
-
-
-
-    protected void Button1_Click(object sender, EventArgs e)
-    {
-
-        //create an instance of the address class
-        ClsCustomer AnCustomer = new ClsCustomer();
-        //create avariable to store the primary key
-        Int32 CustomerId;
-        //crate a variable to sotre the result of the find operation
-        Boolean Found = false;
-        //get the primary key entered by the user
-        CustomerId = Convert.ToInt32(TextBox1.Text);
-        //find the record
-        Found = AnCustomer.Find(CustomerId);
-        if (Found == true)
+        else
         {
-            //display the Values of the properties in the form 
-            txtfname.Text = AnCustomer.FirstName;
-            textlname.Text = AnCustomer.LastName;
-            txtemail.Text = AnCustomer.Email;
-            txtphone.Text = AnCustomer.phoneno.ToString();
-            textaddress.Text = AnCustomer.Address;
-            textorderdae.Text = AnCustomer.Orderdate.ToString();
-
-            // Assuming Gender is a boolean, true for female, false for male
-            chkfemale.Checked = AnCustomer.Gender;
-            chkmale.Checked = !AnCustomer.Gender;
+            // Display an error message if the customer ID is not valid
+            lblError.Text = "Invalid Customer ID";
         }
     }
 }
-
-    
-
-
-
-
-
-
-
-

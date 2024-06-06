@@ -33,7 +33,7 @@
         </p>
         <p>
             <asp:Label ID="Label5" runat="server" Text="Address" Font-Bold="True" Font-Size="Medium" width="77px"></asp:Label>
-            <asp:TextBox ID="textaddress" runat="server" Height="19px" style="margin-left: 100px; margin-top: 0px" Width="427px" OnTextChanged="TextBox8_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="textaddress" runat="server" Height="19px" style="margin-left: 100px; margin-top: 0px" Width="427px" ></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="Label6" runat="server" Text="Order Date" Font-Bold="True" Font-Size="Medium"></asp:Label>
@@ -55,9 +55,9 @@
             <asp:Button ID="btnOk" runat="server" Height="48px" OnClick="btnOK_Click" Style="margin-left: 13px; margin-top: 30px" Text="OK" Width="183px" BackColor="#669999" Font-Bold="True" Font-Size="Medium" />
             
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="btnacncel" runat="server" BackColor="#0099CC" Height="49px" OnClick="btnacncel_Click" Text="Cancel" Width="140px" Font-Bold="True" Font-Size="Medium" />
+            <asp:Button ID="btnacncel" runat="server" BackColor="#0099CC" Height="49px"  Text="Cancel" Width="140px" Font-Bold="True" Font-Size="Medium" />
             
-            <asp:Button ID="Button1" runat="server" Height="48px" style="margin-left: 81px" Text="Find" Width="132px" BackColor="#660066" OnClick="Button1_Click" />
+            <asp:Button ID="Button1" runat="server" Height="48px" style="margin-left: 81px" Text="Find" Width="132px" BackColor="#660066"  />
             
         </p>
         <p>

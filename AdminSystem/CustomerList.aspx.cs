@@ -37,10 +37,21 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("CustomerDataEntry.aspx");
     }
 
-    protected void Button2_Click(object sender, EventArgs e)
+    protected void btnEdit_Click(object sender, EventArgs e)
     {
-   
-       
+        Int32 CustomerId;
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            CustomerId = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["CustomerId"] = CustomerId;
+            Response.Redirect("CustomerDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "please select a record from the list to edit";
+            }
+
+        }
     }
-}
+
     
