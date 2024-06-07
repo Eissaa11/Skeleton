@@ -44,6 +44,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtTotal_amt" runat="server"></asp:TextBox>
         </p>
+        <asp:Button runat="server" Text="Find" OnClick="Unnamed1_Click" ID="btnfind"></asp:Button>
         <p>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:CheckBox ID="Chkreserve" runat="server" Text="Reserve" />

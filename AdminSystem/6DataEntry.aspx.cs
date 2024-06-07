@@ -35,4 +35,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //
         Response.Redirect("6Viewer.aspx");
     }
+
+
+    protected void Unnamed1_Click(object sender, EventArgs e)
+    {
+        //create an instance of the order class
+        clsOrdIN AnOrdIN = new clsOrdIN();
+        //create a varioable to store the primary key
+        Int32 Ord_id;
+        //create a variable to store the result of the find operation 
+        Boolean Found = false;
+        //get the primary key entered by the user
+        Ord_id = Convert.ToInt32(txtOrd_id.Text);
+        //find the record
+        Found = AnOrdIN.Find(Ord_id);
+        //if Found
+          if (Found == true)
+                
+        {
+            txtOrd_id.Text = AnOrdIN.Ord_id.ToString();
+            txtCustID.Text = AnOrdIN.CustID.ToString();
+            txtCustname.Text = AnOrdIN.Custname;
+            txtOrdtime.Text = AnOrdIN.Ordtime.ToString();
+            txtTotal_amt.Text = AnOrdIN.Total_amt.ToString();
+            txtTblNO.Text = AnOrdIN.TblNO.ToString();
+            Chkreserve.Checked = AnOrdIN.Reserve;
+
+        }
+    }
 }
