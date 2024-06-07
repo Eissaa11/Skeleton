@@ -6,8 +6,10 @@ namespace ClassLibrary
     
         public class clsOrdIN
         {
-            //private data member for the Reserve property
-            private bool mReserve;
+
+
+        //private data member for the Reserve property
+        private bool mReserve;
 
             //Reserve public property
             public bool Reserve
@@ -169,6 +171,63 @@ namespace ClassLibrary
 
 
 
-           }
         }
+
+        public string Valid(string CustID, string Custname, string TblNO, string Ordtime, string Total_amt)
+        {
+            //create a string variable to store the error
+            String Error = "";
+                        //create a temporary variable to store date values
+            DateTime DateTemp;
+
+            //if the Custname is blank
+            if (Custname.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Custname may not be blank";
+            }
+            //if the Custname is greater than 6 characters
+            if (Custname.Length > 6) 
+            {
+                //record the error
+                Error = Error + "The Custname must be less than 6 characters:";
+            }
+            //if the CustID is greater than 6 characters
+            if (CustID.Length > 6)
+            {
+                //record the error
+                Error = Error + "The CustID must be less than 6 characters:";
+            }
+            //copy the dateAdded value to the DateTemp variable
+            DateTemp = Convert.ToDateTime(Ordtime);
+            if (DateTemp < DateTime.Now.Date)
+            {
+                //record the error
+                Error = Error + "The date cannot be in the past : ";
+            }
+            //check to see if the date is greater than today's date
+            if (DateTemp > DateTime.Now.Date)
+
+                if (TblNO.Length == 0)
+                {
+                    //record the error
+                    Error = Error + "The TblNO may not be blank";
+                }
+            //if the Custname is greater than 6 characters
+            if (TblNO.Length > 6)
+            {
+                //record the error
+                Error = Error + "The TblNO must be less than 6 characters:";
+            }
+            {
+                //record the error
+                Error = Error + "The date cannot be in the future : ";
+            }
+
+
+            //return any error mesages
+
+            return Error;
+        }
+    }
 }
