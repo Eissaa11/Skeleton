@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 
 namespace ClassLibrary
 {
@@ -160,5 +163,124 @@ namespace ClassLibrary
             }
 
         }
+
+        public string Valid(string customerId, string firstname, string placed_at, string phoneno, string total_amount)
+        {
+           
+            //Create a string vARIABLE TO STORE THE ERROR
+            String Error = "";
+            DateTime DateTemp;
+            //if the CustomerId is blank
+            Int32 custtemp;
+            Int32 phn;
+            Decimal tot;
+
+            try
+            {
+                custtemp = Convert.ToInt32(customerId);
+                if (customerId.Length == 0)
+                {
+                    Error = Error + "wrong";
+                    return Error;
+                }
+                if (customerId.Length > 99999)
+                {
+                    Error = Error + "wrong";
+                    return Error;
+                }
+            }
+            catch
+            {
+                Error = Error + "invalid";
+                return Error;
+            }
+            try
+                {
+                    tot = Convert.ToDecimal(total_amount);
+                    if (total_amount.Length == 0)
+                    {
+                        Error = Error + "wrong";
+                        return Error;
+                    }
+                    if (total_amount.Length > 9999)
+                    {
+                        Error = Error + "wrong";
+                        return Error;
+                    }
+
+                }
+            catch
+            {
+                Error = Error + "invalid";
+                return Error;
+            }
+            try
+            {
+                phn = Convert.ToInt32(phoneno);
+                if (phoneno.Length == 0)
+                {
+                    Error = Error + "wrong";
+                    return Error;
+                }
+                if (phoneno.Length > 99999999)
+                {
+                    Error = Error + "wrong";
+                    return Error;
+                }
+
+
+            }
+            catch
+            {
+                Error = Error + "invalid";
+                return Error;
+            }
+            try
+            { 
+                DateTemp = Convert.ToDateTime(custtemp);
+                if  (DateTemp < DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the past : ";
+
+                }
+                //check to see if the date is greater than today's date
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+            }
+            catch
+            {
+                {
+                    Error = Error + "invalid";
+                    return Error;
+                }
+            }
+           
+
+            
+            //is the Firstname blank
+            if (Firstname.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Firstname may not be blank : ";
+            }
+            //if the Firstname is too long
+            if (Firstname.Length > 50)
+            {
+                //record the error
+                Error = Error + "The Firstname must be less than 50 characters : ";
+            }
+
+            
+            //return any error message
+
+            return Error;
+        }
+      
+
     }
 }
