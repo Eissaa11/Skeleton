@@ -136,20 +136,39 @@ namespace ClassLibrary
                     mTblNO = value;
                 }
             }
-
-            public bool Find(int ord_id)
+        /****** FIND METHOD ******/
+        public bool Find(int Ord_id)
+        {
+            // create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the paramter for the Ord_id to search for 
+            DB.AddParameter("@Ord_id", Ord_id);
+            //exucute the stored procedure
+            DB.Execute("sproc_OrdIN_FilterByOrd_id");
+            //if one recod is found  (there should be either one or zero)
+            if (DB.Count == 1)
             {
-                //set the private data members to the test data value
-                mOrd_id = 21;
-                mOrdtime = Convert.ToDateTime("06/06/2024");
-                mCustanme = "John Tim";
-                mTblNO = Convert.ToInt32("10");
-                mCustID = Convert.ToInt32("15");
-                mTotal_amt = 30;
-                mReserve = Convert.ToBoolean("True");
+                //copy the data from database to private data members
+                mOrd_id = Convert.ToInt32(DB.DataTable.Rows[0]["Ord_id"]);
+                mCustID = Convert.ToInt32(DB.DataTable.Rows[0]["CustID"]);
+                mTblNO = Convert.ToInt32(DB.DataTable.Rows[0]["TblNO"]);
+                mCustanme = Convert.ToString(DB.DataTable.Rows[0]["Custname"]);
+                mTotal_amt = Convert.ToInt32(DB.DataTable.Rows[0]["Total_amt"]);
+                mOrdtime = Convert.ToDateTime(DB.DataTable.Rows[0]["Ordtime"]);
+                mReserve = Convert.ToBoolean(DB.DataTable.Rows[0]["Ord_id"]);
 
-                //always return true
+                //return that everything worked OK
                 return true;
             }
+            //if no record was foumd 
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
+
+
+
+           }
         }
 }
