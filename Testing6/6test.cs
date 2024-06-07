@@ -107,7 +107,7 @@ namespace Testing6
             //create Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //test to see if the result is true
@@ -124,11 +124,11 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //test to see if the result is true
-            if (AnOrdIN.Ord_id != 21)
+            if (AnOrdIN.Ord_id != 6)
             {
                 OK = false;
             }
@@ -146,11 +146,11 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //ckeck the Ordtime property
-            if (AnOrdIN.Ordtime != Convert.ToDateTime("06/06/2024"))
+            if (AnOrdIN.Ordtime != Convert.ToDateTime("24/12/2024 00:00:00"))
             {
                 OK = false;
             }
@@ -168,11 +168,11 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //ckeck the Custname property
-            if (AnOrdIN.Custname != "John Tim")
+            if (AnOrdIN.Custname != "Tony Chopper")
             {
                 OK = false;
             }
@@ -189,11 +189,11 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //ckeck the Custname property
-            if (AnOrdIN.TblNO != Convert.ToInt32("10"))
+            if (AnOrdIN.TblNO != Convert.ToInt32("2"))
             {
                 OK = false;
             }
@@ -211,11 +211,11 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //ckeck the CustID property
-            if (AnOrdIN.CustID != Convert.ToInt32("15"))
+            if (AnOrdIN.CustID != Convert.ToInt32("20"))
             {
                 OK = false;
             }
@@ -233,11 +233,11 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //ckeck the Total_amt property
-            if (AnOrdIN.Total_amt != 30)
+            if (AnOrdIN.Total_amt != 80.0000)
             {
                 OK = false;
             }
@@ -255,7 +255,7 @@ namespace Testing6
             //create Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 Ord_id = 21;
+            Int32 Ord_id = 6;
             //invoke the method
             Found = AnOrdIN.Find(Ord_id);
             //ckeck its reserve or not
