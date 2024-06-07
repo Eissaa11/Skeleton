@@ -20,23 +20,76 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        //create a new instance of clsOrderT
         clsOrderT AnOrderT = new clsOrderT();
-      //Capture the OrderID
-        AnOrderT.Order_Id=Convert.ToInt32(txtOrder_Id.Text);
-       //Capture CustomerId
-        AnOrderT.CustomerId = Convert.ToInt32(txtCustomerId.Text);
-        //Capture the First Name
-        AnOrderT.Firstname = txtFirstname.Text;
-        //Capture the Phone Number
-        AnOrderT.Phoneno=Convert.ToInt32(txtphoneno.Text);
-        //Capture the Date for the order  placed
-        AnOrderT.Placed_at = Convert.ToDateTime(txtPlaced_at.Text);
-        //Capture the total amount of the Order
-        AnOrderT.Total_amount = Convert.ToInt32(txtTotal_amount.Text);
-        //Capture the Order is paid or not
-        AnOrderT.Paid = chkPaid.Checked;
-        Session["AnOrderT"] = AnOrderT;
-        Response.Redirect("2OrderViewer.aspx");
+
+        //capture the CustomerId
+
+        string CustomerId = txtCustomerId.Text;
+
+        //capture the Firstname
+
+        string Firstname = txtFirstname.Text;
+
+        //capture thePhoneno
+
+        string Phoneno = txtphoneno.Text;
+        //capture the Placed_at
+
+        string Placed_at = txtPlaced_at.Text;
+
+        //capture the Total_amount
+
+        string Total_amount = txtTotal_amount.Text;
+
+
+        //capture Paid or not
+
+        String Paid = chkPaid.Text;
+
+        //variable to store any error messages
+
+        string Error = "";
+
+        //validate the data
+
+        Error = AnOrderT.Valid(CustomerId, Firstname, Placed_at, Phoneno, Total_amount);
+
+        if (Error == "")
+
+        {
+            //capture the CustomerId
+            AnOrderT.CustomerId = Convert.ToInt32(CustomerId);
+
+            //capture the Firstname
+            AnOrderT.Firstname = Firstname;
+
+            //capture the Placed_at
+
+            AnOrderT.Placed_at = Convert.ToDateTime(Placed_at);
+
+
+            //capture the Phoneno
+            AnOrderT.Phoneno = Convert.ToInt32(Phoneno);
+
+            //Capture Total_amount
+            AnOrderT.Total_amount = Convert.ToInt32(Total_amount);
+
+
+
+
+            //store the Order in the session object
+
+            Session["AnOrderT"] = AnOrderT;
+            //navigate to the view page
+            Response.Redirect("2Orderviewer.aspx");
+        }
+        else
+        {
+
+            //Display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void chkPaid_CheckedChanged(object sender, EventArgs e)
