@@ -1,12 +1,23 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 
 namespace Testing6
 {
     [TestClass]
     public class TstOrdIN
     {
+
+
+
+        //good test data
+        //private data member for the Reserve property
+        string CustID = Convert.ToString(123);
+        string Custname = "Tony Chopper";
+        string TblNO = Convert.ToString(40);
+        string Ordtime = DateTime.Now.ToShortDateString();
+        string Total_amt = Convert.ToString(2000);
         [TestMethod]
         public void InstanceOK()
         {
@@ -16,7 +27,7 @@ namespace Testing6
             Assert.IsNotNull(AnOrdIN);
         }
         [TestMethod]
-        public void ReservePropertyOK() 
+        public void ReservePropertyOK()
         {
             //create an instance of the class we want to create
             clsOrdIN AnOrdIN = new clsOrdIN();
@@ -73,7 +84,7 @@ namespace Testing6
             //assign the data to the property
             AnOrdIN.Total_amt = TestData;
             //test to see that the two values are the same
-            Assert.AreEqual(AnOrdIN.Total_amt, TestData) ;
+            Assert.AreEqual(AnOrdIN.Total_amt, TestData);
         }
         [TestMethod]
         public void TblNOPropertyOK()
@@ -265,6 +276,372 @@ namespace Testing6
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ValidMethod()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string variable to store any error message
+            String Error = "";
+            //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustnameMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string Custname = "";  //this should trigger an error
+                                   //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustnameMin()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string Custname = "a";  //this should trigger an error
+                                    //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustnameMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string Custname = "aa";  //this should trigger an error
+                                     //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustnameMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "aaaaa";  //this should be okay
+                                      //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustnameMax()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string Custname = "aaaaaa";  //this should be okay
+                                         //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustnameMid()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string Custname = "aaa";  //this should trigger an error
+                                      //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustnameMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string Custname = "aaaaaaa";  //this should trigger an error
+                                          //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustnameExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string Custname = "";
+            Custname = Custname.PadRight(500, 'a');//this should trigger an error
+                                                   //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustIDMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustnamID = "";  //this should trigger an error
+                                    //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustIDMin()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "1";  //this should trigger an error
+                                  //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustIDMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "11";  //this should trigger an error
+                                   //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustIDMaxLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "11111";  //this should be okay
+                                      //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustIDMax()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "11111";  //this should be okay
+                                      //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustIDMid()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "111";  //this should trigger an error
+                                    //invoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustIDMaxPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some data to pass the method
+            string CustID = "1111111";  //this should trigger an error
+                                        //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustIDExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string c=variable to store any error message
+            String Error = "";
+            //create some test data to pass the method
+            string CustID = "";
+            CustID = CustID.PadRight(500, '1');//this should trigger an error
+                                               //incoke the method 
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrdtimeExtremeMin()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string variable
+            string Ordtime = TestDate.ToString();
+            //invoke the method
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string Ordtime = TestDate.ToString();
+            //invoke the method
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateAddedMin()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string Ordtime = TestDate.ToString();
+            //invoke the method
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void DateAddedMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string Ordtime = TestDate.ToString();
+            //invoke the method
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedExtremeMax()
+        {
+            //create an instance of the class we want to create
+            clsOrdIN AnOrdIN = new clsOrdIN();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 100 years
+            TestDate = TestDate.AddYears(100);
+            //convert the date variable to a string variable
+            string Ordtime = TestDate.ToString();
+            //invoke the method
+            Error = AnOrdIN.Valid(CustID, Custname, TblNO, Ordtime, Total_amt);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+
         }
     }
 }
